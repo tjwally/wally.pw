@@ -1,0 +1,173 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/tingle/tingle.min.js"></script>
+<link rel="stylesheet" href="js/tingle/tingle.css">
+<script src="js/wallet-address-validator.min.js"></script>
+<script src="js/base64.js"></script>
+<script src="js/main.prod.js"></script>
+<script src="js/coin.btc.js"></script>
+<script src="js/coin.bch.js"></script>
+<script src="js/coin.ltc.js"></script>
+<script src="js/coin.eth.js"></script>
+<script src="js/coin.doge.js"></script>
+<script src="js/tokens.eth.js"></script>
+<script src="js/anon.coins.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+<link rel="stylesheet" href="css/flexboxgrid.min.css">
+<link rel="stylesheet" href="css/wally.css">
+<script>
+function getWallyTheme () {
+if (localStorage.getItem("wallyTheme") === null) {
+console.log("###NO wally theme DATA###");
+wallyTheme = "classic";
+loadjscssfile("themes/"+wallyTheme+".css", "css")
+} else {
+wallyTheme = localStorage.getItem("wallyTheme");
+loadjscssfile("themes/"+wallyTheme+".css", "css")
+}
+
+}
+
+function loadjscssfile(filename, filetype){
+    if (filetype=="css"){
+        var fileref=document.createElement("link")
+        fileref.setAttribute("rel", "stylesheet")
+        fileref.setAttribute("type", "text/css")
+        fileref.setAttribute("href", filename)
+		console.log(fileref);
+    }
+    if (typeof fileref!="undefined")
+        document.getElementsByTagName("head")[0].appendChild(fileref)
+}
+getWallyTheme();
+</script>
+
+</head>
+<body>
+
+<div class="mainScreenwrapper row row--no-gutter">
+<div class="leftP1 col-xs-10 col--no-gutter mainScreen theme_backgroundcolor1 theme_color1 theme_font1"><div class="wealthmeter theme_font2 theme_color2 theme_backgroundcolor2">Richness: <span class="wealthCounter">0</span></div>
+<div id="CoinOverViewWrapper"> 
+<div id="CoinOverView" class=""></div>
+</div>
+<div class="WalletsTracked"></div>
+</div>
+
+<!-- Key Manager  -->
+<div class="keymanager leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
+<div class="KeymanagerTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Keymanager</span></div></div>
+<div id="addkeyForm">
+<div class="T2head">Add new Public Key</div>
+<label for="coinpubkey">Public Key</label>
+<input id="coinpubkey" type="text" name="coinpubkey" value="">
+<label for="addressdescription">Description</label>
+<input id="addressdescription" type="text" name="addressdescription" value="">
+<label for="cointype">Currency</label>
+ <select name="cointype" id="cointype">
+  <option value="btc">Bitcoin</option>
+  <option value="bch">Bitcoin Cash</option>
+  <option value="eth">Etherium</option>
+  <option value="ltc">Litecoin</option>
+  <option value="doge">Dogecoin</option>
+  </select> 
+<button id="savepubkey">add</button>
+<div style="font-size:0.7vw;">(supported Ethereum Tokens are automatically scanned)</div>
+</div>
+<div id="keymanagerWalletswrapper">
+<div id="keymanagerWallets"></div>
+</div>
+</div>
+<!-- Key Manager -->
+
+<!-- AnonCoins -->
+<div class="AnonCoins leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
+<div class="AnonCoinsTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Anonymous Coins</span></div></div>
+<div id="anonC0ins"></div>
+</div>
+<!-- AnonCoins -->
+
+<!-- Settings -->
+<div class="wallysettings leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
+<div class="wallysettingsTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Settings</span></div>
+</div>
+<div class="fiatselect">
+<label for="fiatcurrencySEL">Fiat Currency</label>
+ <select name="fiatcurrencySEL" id="fiatcurrencySEL">
+  <option value="USD">USD</option>
+  <option value="EUR">EUR</option>
+  <option value="GBP">GBP</option>
+  </select> 
+</div>
+
+<div class="themeselect">
+<label for="themeselect">Theme</label>
+ <select name="themeselect" id="themeselect">
+  <option value="8bit">8bit</option>
+  <option value="classic">classic</option>
+  </select> 
+</div>
+
+<div class="reloadBTN btn btn-b1 btn-cons">Reload Wally</div>
+<div class="theme_infoBox">(reload to apply FIAT and Theme changes)</div>
+
+<div class="resetBTN btn btn-danger btn-cons">Reset All Wally Data</div>
+</div>
+<!-- Settings -->
+
+<!-- Import/Export -->
+<div class="importExport leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
+<div class="importExportTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Import/Export</span></div></div>
+<div class="importwrapper">
+<textarea id="importJSON" placeholder="paste your JSON backup here"></textarea>
+<div class="btn btn-b1 btn-cons" id="importJSONBTN">Import JSON Backup</div>
+<code id="downloadJSONDIS"></code>
+<div class="btn btn-b1  btn-cons" id="downloadJSON">Generate JSON Backup</div>
+</div>
+</div>
+<!-- Import/Export -->
+
+<!-- Right Menu -->
+<div class="rightP1 col-xs-2 col--no-gutter theme_backgroundcolor3 theme_color3 theme_font3"><div class="top1 theme_font4 theme_logo1"><span>Wally</span></div>
+<div class="top2 theme_logo2 theme_font4"><span>The HODL Wallet</span></div>
+<div class="settings theme_font3">
+<div class="P1BTN homeBTN theme_font3">Home</div>
+<div class="P1BTN keymanagerBTN theme_font3">PubKey Manager</div>
+<div class="P1BTN anoncoinsBTN theme_font3">Anonymous Coins</div>
+<div class="P1BTN settingsBTN theme_font3">Settings</div>
+<div class="P1BTN impexpBTN theme_font3">Import/Export</div>
+<div class="P1BTN abountBTN theme_font3">About</div>
+</div>
+</div>  
+<!-- Right Menu -->
+</div>
+<div id="about">
+<div class="theme_font4">
+<p>
+Wally - The HODL Wallet is distributed under the <a href="LICENSE">MIT software license</a>.</p>
+<p>Wally is using data from these sources:<br>
+<a target="_blank" href="cryptocompare.com">cryptocompare.com</a> for price data<br>
+<a href="blockdozer.com">blockdozer.com</a>, <a href="chain.so">chain.so</a>, <a href="ethplorer.io">ethplorer.io</a> for coin data.</p>
+<p>
+Wally also uses <a target="_blank" href="jquery.org">jQuery</a> and <a target="_blank" href="http://robinparisi.github.io/tingle/">tingle.js</a> 
+</p>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<script>
+$( document ).ready(function() {
+FLinit();
+});  
+</script>
+
+</html>
