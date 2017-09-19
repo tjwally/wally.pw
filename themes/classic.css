@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
+
+html, body{
+background-color:#;
+}
+
+
+.theme_font1{		    font-family: Tahoma,Verdana,Segoe,sans-serif;	}
+.theme_font2{			font-family: Tahoma,Verdana,Segoe,sans-serif;	font-size:1.5vw;		}
+.theme_font3{			font-family: Tahoma,Verdana,Segoe,sans-serif;font-size:1.5vw;	}
+.theme_font4{			font-family: 'Montserrat Alternates', sans-serif;	font-size:2vw;	}
+.tingle-btn {		font-family: 'Montserrat Alternates', sans-serif;}
+
+.theme_logo1{font-size:4vw;	}
+.theme_logo2{font-size:1vw;	}
+
+.theme_backgroundcolor1{ background-color:#ccc;}
+.theme_backgroundcolor2{ background-color:#354251;}
+.theme_backgroundcolor3{ background-color:#354251;}
+
+.theme_color1{}
+.theme_color2{color:#fff;}
+.theme_color3{color:#fff;}
+
+td{color:black;}
+#CoinOverView .card img {max-height:30%;}
+
+.P1BTN {cursor:pointer; color:#fff;}
+.P1BTN:hover {color:white; background-color:black;}
+.activeBTN {cursor:default;font-weight:bold;color:#078E10; }
+.activeBTN:hover {  color:#078E10; background-color:#354251;}

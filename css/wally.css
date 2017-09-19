@@ -1,0 +1,169 @@
+html, body{
+	margin:0;
+	padding:0;
+
+overflow: hidden; 
+height:100%;
+}
+a {text-decoration: none;}
+.row--no-gutter {
+   margin-left: 0;
+   margin-right: 0;
+}
+
+.col--no-gutter {
+   padding-left: 0;
+   padding-right: 0;
+}
+.mainScreenwrapper {
+	min-height:100vh;
+	min-width:100vw;
+}
+
+
+.T2head{width:100%; text-align:center; font-size:2vw;}
+#addkeyForm {text-align:center;}
+#coinpubkey {width:25%;}
+#addressdescription {width:15%;}
+
+.keymanager{display:none;}
+.KeymanagerTop{width:100%; text-align:center; height:3vw;   display: flex; justify-content: center;flex-direction: column;align-items: center;}
+.keymanKeyHeader{width:100%; text-align:center; font-size:1.5vw;background-color:#000; margin-top:3vh;}
+.keymanagerTable {width:90%; margin:0 auto;}
+.tableDesc{font-weight:bold; border-bottom:1px solid black;}
+.tableDesc td{border-bottom:1px solid black;}
+.deleteThis{cursor:pointer;}
+#keymanagerWallets{    -webkit-flex: 1 1 auto;
+    overflow-y: auto;
+    height: 80vh; }
+#keymanagerWalletswrapper{
+    -webkit-flex: 1 1 auto;
+    overflow-y: auto;
+    height: 100%; 
+}
+
+
+	
+.AnonCoins{display:none; text-align:center;}
+.AnonCoinsTop{width:100%; text-align:center; height:3vw;   display: flex; justify-content: center;flex-direction: column; align-items: center;}
+	
+.wallysettings{display:none; text-align:center;}
+.wallysettingsTop{width:100%; text-align:center;  height:3vw;   display: flex; justify-content: center;flex-direction: column; align-items: center;}
+.resetBTN{margin:0 auto; margin-top:5vh; display:block; width:50vw;display:block;}
+.reloadBTN{margin:0 auto; margin-top:5vh; display:block; width:50vw; display:block;}
+.fiatselect{margin:0 auto; margin-top:5vh; display:block;}
+
+.importExport{display:none;}
+.importExportTop{width:100%; text-align:center;  height:3vw;   display: flex; justify-content: center;flex-direction: column; margin-bottom:1vh; align-items: center;}
+#downloadJSONDIS{display:flex; margin-top:5vh; width:100%; height:auto; background-color:fff; padding:1vw; text-align:center; font-size:10px; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif;}
+#importJSONBTN{}
+#importJSON{display:block; width:100%; min-height:10vh; padding:0vw; margin-bottom:0vw;}
+.importwrapper{width:80%; margin:0 auto; text-align:center; margin-top:5vh;}
+.leftP1 {
+}
+
+.rightP1 {
+  display:inline-block;
+  background-color:#354251;
+  
+  font-weight:;
+  height:100vh;
+  overflow:hidden;
+}
+.rightP1 .top1 { padding-top:2vh;vertical-align:middle; text-align:center;}
+.rightP1 .top2 {margin-top:0;vertical-align:middle; text-align:center; margin-top:-0.4vw;   }
+.settings {font-size:1vw; display: flex; justify-content: center;flex-direction: column; text-align:center; height:80vh;}
+.settings div {padding-bottom:2vh;padding-top:2vh;}
+.wealthmeter{font-size:2vw; width:100%; text-align:center;     margin:0; height:3vw; padding-top:0vh; display: flex; justify-content: center;flex-direction: row; align-items: center;}
+.wealthCounter {display: flex; justify-content: center;flex-direction: row; align-items: center;}
+.WalletsTracked {position:absolute; bottom:0.1vh; left:0.1vw; font-size:0.8vw; display:flex;}
+#CoinOverView{
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row /* works with row or column */
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+   -webkit-flex-flow: row wrap;
+   flex-flow: row wrap;
+   -webkit-align-content: flex-start;
+   align-content: flex-start;
+   height:100%;
+}
+#CoinOverView .card{
+text-align:center;
+width: auto;
+height:15vh;
+border: 0px solid gray;
+margin-left: 1vw;
+margin-right: 1vw;
+padding:2vw;
+}
+#CoinOverViewWrapper{
+    -webkit-flex: 1 1 auto;
+    overflow-y: auto;
+    height: 100%; 
+}
+.coinWealth{font-size:2vw;}
+.coinAmount{font-size:1vw;}
+.thiscoinprice{font-size:1vw;}
+
+body {
+   
+}
+
+.flex-center-v{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#about{display:none;}
+
+
+
+
+
+
+
+
+.btn {
+display: inline-block;
+padding: 9px 12px;
+padding-top: 7px;
+margin-bottom: 0;
+font-size: 14px;
+line-height: 20px;
+color: #5e5e5e;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+background-color: #d1dade;
+-webkit-border-radius: 0px;
+-webkit-border-radius: 0px;
+-webkit-border-radius: 0px;
+background-image: none !important;
+border: none;
+text-shadow: none;
+box-shadow: none;
+transition: all 0.12s linear 0s !important;
+font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.btn-cons {
+margin-right: 5px;
+min-width: 120px;
+margin-bottom: 8px;
+}
+.btn-danger {
+color: #fff;
+background-color: #d9534f;
+border-color: #d43f3a;
+}
+.btn-b1 {
+color: #fff;
+background: rgb(66, 184, 221);
+border-color: #d43f3a;
+}

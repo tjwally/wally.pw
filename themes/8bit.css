@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=VT323');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+html, body{
+background-color:#000;
+}
+
+
+.theme_font1{		font-family: 'VT323', monospace;	font-size:2vw;		}
+.theme_font2{		font-family: 'Press Start 2P', cursive;, sans-serif;	font-size:1.5vw;		}
+.theme_font3{		font-family: 'VT323', monospace;	font-size:2vw;	}
+.theme_font4{		font-family: 'Press Start 2P', cursive;, sans-serif;}
+.tingle-btn {		font-family: 'Press Start 2P', cursive;, sans-serif;}
+
+.theme_logo1{font-size:2.5vw;	}
+.theme_logo2{font-size:1vw;	}
+
+.theme_backgroundcolor1{ background-color:#071207;}
+.theme_backgroundcolor2{ background-color:green;}
+.theme_backgroundcolor3{ background-color:#000;}
+
+.theme_color1{color:#00D400;}
+.theme_color2{}
+.theme_color3{color:#00D400;}
+
+td{color:#00D400;}
+#CoinOverView .card img {max-height:30%;}
+
+.P1BTN {cursor:pointer; color:#fff;}
+.P1BTN:hover {color:#00D400; background-color:#071207;}
+.activeBTN {cursor:default;font-weight:bold;color:#078E10; }
+.activeBTN:hover {  color:#078E10; background-color:#000;}
+
+.tingle-modal-box {
+  border-radius: 0px;
+}
