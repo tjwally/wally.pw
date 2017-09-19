@@ -35,3 +35,16 @@ td{color:#00D400;}
 .tingle-modal-box {
   border-radius: 0px;
 }
+
+.theme_Select{
+   -webkit-appearance: menulist-button;
+   height: 3vh;
+   color:#fff;
+   background-color:#071207;
+   font-family: 'Press Start 2P', cursive;, sans-serif;
+   border:1px solid green;
+}
+
+.btn{font-family: 'Press Start 2P', cursive;, sans-serif;}
+.tingle-modal{font-family: 'Press Start 2P', cursive;, sans-serif; color:red;}
+.tingle-modal-box{background-color:darkred;}

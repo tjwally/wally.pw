@@ -34,7 +34,7 @@ getpubkeyBalanceDOGE(DOGEkeys[dogei].pubkey);
 //$(window).trigger("resize");
 dogei++;        
 if (dogei < DOGEkeys.length) DOGEBalancecrawler()
-}, Math.floor(Math.random() * 1000) + 100)
+}, Math.floor(Math.random() * 1000) + 1000)
 }
 }
 

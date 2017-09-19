@@ -64,7 +64,7 @@
   background-color: transparent;
   color: #f0f0f0;
   font-size: 6rem;
-  font-family: monospace; 
+/*  font-family: monospace;  */
   line-height: 1;
   cursor: pointer;
   -webkit-transition: color .3s ease;

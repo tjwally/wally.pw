@@ -1,10 +1,26 @@
 function getAnonCoins (callback) {
 if (localStorage.getItem("anoncoins") === null) {
 console.log("###NO anoncoins DATA###");
-anoncoins = [{coin:"XMR", name:"Monero", balance:"0"},{coin:"ZEC", name:"ZCash", balance:"0"}];
+anoncoins = [{coin:"XMR", name:"Monero", balance:"0"},{coin:"ZEC", name:"ZCash", balance:"0"},{coin:"ARDR", name:"Ardor", balance:"0"},{coin:"NXT", name:"NXT", balance:"0"}];
+
 console.log(anoncoins);
 } else {
 anoncoins = JSON.parse(localStorage.getItem("anoncoins"));
+
+var a = [{name:"bull"},
+    { name: "tom", text: "tasty" },
+    { name: "tom", text: "tasty" }
+]
+var twoadd = anoncoins.findIndex(x => x.coin=="NXT")
+if (twoadd === -1){anoncoins.push({coin:"NXT", name:"NXT", balance:"0"});}
+var twoadd = anoncoins.findIndex(x => x.coin=="ARDR")
+if (twoadd === -1){anoncoins.push({coin:"ARDR", name:"Ardor", balance:"0"});}
+var twoadd = anoncoins.findIndex(x => x.coin=="ZEC")
+if (twoadd === -1){anoncoins.push({coin:"ZEC", name:"ZCash", balance:"0"});}
+var twoadd = anoncoins.findIndex(x => x.coin=="ZEC")
+if (twoadd === -1){anoncoins.push({coin:"XMR", name:"Monero", balance:"0"});}
+
+
 console.log(anoncoins);
 }
 buildAnonCoins();
@@ -15,7 +31,7 @@ function buildAnonCoins (callback) {
 anonheader = 0;
 if (anonheader === 0){
 var $container = $("#anonC0ins");
-$container.append("<table class=\"keymanagerTable \">"
+$container.append("<table class=\"keymanagerTablePC \">"
 + "<tr class=\"tableDesc\"><td>Name</td><td>Symbol</td><td>Balance</td></tr>"
 + "<tbody class=\"keymanan0nkeys\"></table>");
 anonheader = 1;
@@ -65,9 +81,9 @@ thisCoinWealthFIAT = ('$' + parseFloat(thisCoinWealthFIAT, 10).toFixed(2).replac
 var $container = $("#CoinOverView");
 $container.append("<div class=\"card BTCcard\">"
 +"<img src=\"images/logos/"+cname+".png\">"
-+"<div class=\"coinWealth\" id=\"BTCwealth\">"+thisCoinWealthFIAT+"</div>"
-+"<div class=\"coinAmount\" id=\"BTCamount\">"+abalance+"</div>"
-+"<div class=\"thiscoinprice\">1 "+cname+" = "+eval(thisrate)+" "+fiatCurrency+"</div>"
++"<div class=\"coinWealth\" id=\""+coin+"wealth\">"+thisCoinWealthFIAT+" "+fiatCurrency+"</div>"
++"<div class=\"coinAmount\" id=\""+coin+"amount\">"+abalance+"</div>"
++"<div class=\"thiscoinprice\">1 "+cname+" ="+eval(thisrate)+" "+fiatCurrency+"</div>"
 +"</div>");
 } 	
 })
@@ -83,7 +99,7 @@ var coin = $(this).attr("data-coin")
 var name = $(this).attr("data-cname")
 console.log(name);
 
-var index2del = anoncoins.some(function(item, index) { index2del = index; return item.coin == coin; });
+var index2del = anoncoins.some(function(item, index) { index2del = index; return item.name == name; });
 if (!index2del) {
     return false;
 }

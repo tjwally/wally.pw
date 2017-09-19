@@ -35,7 +35,7 @@ getpubkeyBalanceBTC(thisaddress);
 //$(window).trigger("resize");
 i++;        
 if (i < BTCkeys.length) Balancecrawler()
-}, Math.floor(Math.random() * 1000) + 100)
+}, Math.floor(Math.random() * 1000) + 1000)
 }
 }
 

@@ -3,7 +3,150 @@ richness= 0;
 scr33n=0;
 fiatCurrency = "";
 
+function APIserverCheck() {
+$.ajax({url: "https://api.ethplorer.io",
+        type: "HEAD",
+        timeout:30000,
+        statusCode: {
+            200: function (response) {
+				$( "#ethplorer" ).addClass( "green" );
+				$( "#ethplorer" ).removeClass( "red" );				
+            },
+            400: function (response) {
+                console.log("ethplorer down :(");
+            },
+            0: function (response) {
+                console.log("ethplorer down :(");
+            }              
+        }
+ });
+ $.ajax({url: "https://min-api.cryptocompare.com",
+        type: "HEAD",
+        timeout:30000,
+        statusCode: {
+            200: function (response) {
+				$( "#cryptocompare" ).addClass( "green" );
+				$( "#cryptocompare" ).removeClass( "red" );				
+            },
+            400: function (response) {
+                console.log("cryptocompare down :(");
+            },
+            0: function (response) {
+                console.log("cryptocompare down :(");
+            }              
+        }
+ });
+$.ajax({url: "http://bcc.blockdozer.com/insight-api/",
+        type: "HEAD",
+        timeout:30000,
+        statusCode: {
+            200: function (response) {
+				$( "#bccblockdozer" ).addClass( "green" );
+				$( "#bccblockdozer" ).removeClass( "red" );				
+            },
+            404: function (response) {
+				$( "#bccblockdozer" ).addClass( "green" );
+				$( "#bccblockdozer" ).removeClass( "red" );	
+            },
+            400: function (response) {
+                console.log("bccblockdozer down :(");
+            },
+            0: function (response) {
+                console.log("bccblockdozer down :(");
+            }              
+        }
+ });
+ $.ajax({url: "http://btc.blockdozer.com/insight-api/",
+        type: "HEAD",
+        timeout:30000,
+        statusCode: {
+            200: function (response) {
+				$( "#btcblockdozer" ).addClass( "green" );
+				$( "#btcblockdozer" ).removeClass( "red" );				
+            },
+            404: function (response) {
+				$( "#btcblockdozer" ).addClass( "green" );
+				$( "#btcblockdozer" ).removeClass( "red" );	
+            },
+            400: function (response) {
+                console.log("btcblockdozer down :(");
+            },
+            0: function (response) {
+                console.log("btcblockdozer down :(");
+            }              
+        }
+ });
+  $.ajax({url: "https://chain.so/api/v2/get_address_balance/LTC/",
+        type: "HEAD",
+        timeout:30000,
+        statusCode: {
+            200: function (response) {
+				$( "#chainso" ).addClass( "green" );
+				$( "#chainso" ).removeClass( "red" );				
+            },
+            404: function (response) {
+				$( "#chainso" ).addClass( "green" );
+				$( "#chainso" ).removeClass( "red" );	
+            },
+            400: function (response) {
+                console.log("chainso down :(");
+            },
+            0: function (response) {
+                console.log("chainso down :(");
+            }              
+        }
+ });
+}
 
+
+
+
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+function b64EncodeUnicode(str) {
+    // first we use encodeURIComponent to get percent-encoded UTF-8,
+    // then we convert the percent encodings into raw bytes which
+    // can be fed into btoa.
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        function toSolidBytes(match, p1) {
+            return String.fromCharCode('0x' + p1);
+    }));
+}
+function b64dec(str) {
+    // Going backwards: from bytestream, to percent-encoding, to original string.
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+}
+
+
+if (getParameterByName('wbk') != null){
+wbk = getParameterByName('wbk') ;
+//console.log("BKP DETECTED");	
+//console.log(wbk);
+wbk = wbk.replace(/"/g,"");
+var decodedString = b64dec(wbk);
+//console.log(decodedString); 
+localStorage.clear();
+	var importJSon = decodedString;
+	if(importJSon.indexOf("BTCSTART") != -1){	var BTCkeys=importJSon.substring(importJSon.lastIndexOf("##BTCSTART##")+12,importJSon.lastIndexOf("##BTCEND##"));	console.log("T0: "+BTCkeys); localStorage.setItem("BTCkeys", BTCkeys);}	
+	if(importJSon.indexOf("BCHSTART") != -1){	var BCHkeys=importJSon.substring(importJSon.lastIndexOf("##BCHSTART##")+12,importJSon.lastIndexOf("##BCHEND##"));	console.log("T0: "+BCHkeys); localStorage.setItem("BCHkeys", BCHkeys);}	
+	if(importJSon.indexOf("LTCSTART") != -1){	var LTCkeys=importJSon.substring(importJSon.lastIndexOf("##LTCSTART##")+12,importJSon.lastIndexOf("##LTCEND##"));	console.log("T0: "+LTCkeys); localStorage.setItem("LTCkeys", LTCkeys);}	
+	if(importJSon.indexOf("DOGESTART") != -1){	var DOGEkeys=importJSon.substring(importJSon.lastIndexOf("##DOGESTART##")+13,importJSon.lastIndexOf("##DOGEEND##"));	console.log("T0: "+DOGEkeys); localStorage.setItem("DOGEkeys", DOGEkeys);}	
+	if(importJSon.indexOf("ETHSTART") != -1){	var ETHkeys=importJSon.substring(importJSon.lastIndexOf("##ETHSTART##")+12,importJSon.lastIndexOf("##ETHEND##"));	console.log("T0: "+ETHkeys); localStorage.setItem("ETHkeys", ETHkeys);}	
+	if(importJSon.indexOf("A_CSTART") != -1){	var anoncoins=importJSon.substring(importJSon.lastIndexOf("##A_CSTART##")+12,importJSon.lastIndexOf("##A_CEND##"));	console.log("T0: "+anoncoins); localStorage.setItem("anoncoins", anoncoins);}	
+	if(importJSon.indexOf("S_FCSTART") != -1){	var fiatCurrency=importJSon.substring(importJSon.lastIndexOf("##S_FCSTART##")+13,importJSon.lastIndexOf("##S_FCEND##"));	console.log("T0: "+fiatCurrency); localStorage.setItem("fiatCurrency", fiatCurrency);}	
+	if(importJSon.indexOf("S_WTSTART") != -1){	var wallyTheme=importJSon.substring(importJSon.lastIndexOf("##S_WTSTART##")+13,importJSon.lastIndexOf("##S_WTEND##"));	console.log("T0: "+wallyTheme); localStorage.setItem("wallyTheme", wallyTheme);}	
+	window.location = window.location.pathname + window.location.hash;
+}
 
 function getfiatCurrency (callback) {
 if (localStorage.getItem("fiatCurrency") === null) {
@@ -20,6 +163,7 @@ callback();
 // ETHkeys
 
 function FLinit() {
+APIserverCheck();
 getfiatCurrency(function () {
 $("#keymanagerWallets").empty();
 $("#CoinOverView").empty();
@@ -49,7 +193,7 @@ function priceCheck (callback) {
 console.log("###PRICE CHECK###");	
  jQuery.ajax({
     dataType: "json",
-    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,STORJ,XMR,ZEC,LTC,DOGE&tsyms="+fiatCurrency,
+    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,STORJ,XMR,ZEC,LTC,DOGE,ARDR,NXT&tsyms="+fiatCurrency,
     success: function( data ) { 
 	rateBTC = data['BTC'][fiatCurrency];
 	rateBCH = data['BCH'][fiatCurrency];
@@ -59,6 +203,8 @@ console.log("###PRICE CHECK###");
 	rateSTORJ = data['STORJ'][fiatCurrency];
 	rateXMR = data['XMR'][fiatCurrency];
 	rateZEC = data['ZEC'][fiatCurrency];
+	rateARDR = data['ZEC'][fiatCurrency];
+	rateNXT = data['ZEC'][fiatCurrency];
 		callback();
 		}
 		});
@@ -150,11 +296,16 @@ var modal = new tingle.modal({
 //    	return false; 
     }
 });
-modal.setContent('<h1>No keys found!</h1><p>Open the Key Manager to add keys or open the Settings Page to import a JSON Backup</p>');
+modal.setContent('<h1>No data found!</h1><p>Open the PubKey Manager or the Unsupervised Cryptos to get started.<br> You can also restore a JSON backup on the settings page</p>');
 modal.addFooterBtn('Key Manager', 'tingle-btn tingle-btn--primary', function() {
     modal.close();
 	console.log('KeyManager');
 showKeyManagement();
+});
+modal.addFooterBtn('Unsupervised Cryptos', 'tingle-btn tingle-btn--primary', function() {
+    modal.close();
+	console.log('Unsupervised Cryptos');
+showAnonCoins();
 });
 modal.addFooterBtn('Import/Export', 'tingle-btn tingle-btn--primary', function() {
     modal.close();
@@ -318,7 +469,6 @@ $('#downloadJSON').on('click', function() {
 		$('#downloadJSONDIS').html(BTCkeys+BCHkeys+LTCkeys+DOGEkeys+ETHkeys+fiatCurrencyexp+wallyThemeexp+anoncoins);
 });
 
-
 $('#importJSONBTN').on('click', function() {	 
 	localStorage.clear();
 	var importJSon = $('textarea#importJSON').val();
@@ -333,6 +483,28 @@ $('#importJSONBTN').on('click', function() {
 	location.reload();
 });
 
+$('#generateURL').on('click', function() {	 
+ 		var BTCkeys = localStorage.getItem("BTCkeys");	
+		if (BTCkeys) {var BTCkeys = "##BTCSTART##"+BTCkeys+"##BTCEND##<br>";}else{BTCkeys=""};
+		var BCHkeys = localStorage.getItem("BCHkeys");	
+		if (BCHkeys) {var BCHkeys = "##BCHSTART##"+BCHkeys+"##BCHEND##<br>";}else{BCHkeys=""};
+		var LTCkeys = localStorage.getItem("LTCkeys");	
+		if (LTCkeys) {var LTCkeys = "##LTCSTART##"+LTCkeys+"##LTCEND##<br>";}else{LTCkeys=""};
+		var DOGEkeys = localStorage.getItem("DOGEkeys");	
+		if (DOGEkeys) {var DOGEkeys = "##DOGESTART##"+DOGEkeys+"##DOGEEND##<br>";}else{DOGEkeys=""};
+		var ETHkeys = localStorage.getItem("ETHkeys");	
+		if (ETHkeys) {var ETHkeys = "##ETHSTART##"+ETHkeys+"##ETHEND##<br>";}else{ETHkeys=""};
+		var fiatCurrencyexp = "##S_FCSTART##"+fiatCurrency+"##S_FCEND##<br>";
+		var wallyThemeexp = "##S_WTSTART##"+wallyTheme+"##S_WTEND##<br>";
+		var anoncoins = localStorage.getItem("anoncoins");	
+		if (anoncoins) {var anoncoins = "##A_CSTART##"+anoncoins+"##A_CEND##<br>";}else{anoncoins=""};	
+		//var url = "data:application/octet-stream;base64," + Base64.encode(data);
+		
+// Decode the String
+
+		var wallyURL = b64EncodeUnicode(BTCkeys+BCHkeys+LTCkeys+DOGEkeys+ETHkeys+fiatCurrencyexp+wallyThemeexp+anoncoins);
+		$('#WalletURL').html("http://wally.pw/?wbk="+encodeURIComponent(wallyURL));
+});
 
 
 });

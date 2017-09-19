@@ -36,7 +36,7 @@ getpubkeyBalanceETH(thisETHaddress);
 //$(window).trigger("resize");
 ETHi++;        
 if (ETHi < ETHkeys.length) Balancecrawler()
-}, Math.floor(Math.random() * 1000) + 100)
+}, Math.floor(Math.random() * 1000) + 1000)
 }
 }
 

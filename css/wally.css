@@ -6,6 +6,7 @@ overflow: hidden;
 height:100%;
 }
 a {text-decoration: none;}
+a:visited {color:blue;}
 .row--no-gutter {
    margin-left: 0;
    margin-right: 0;
@@ -19,7 +20,7 @@ a {text-decoration: none;}
 	min-height:100vh;
 	min-width:100vw;
 }
-
+#APIServerCheck{position:absolute; bottom:0px; right:0px; width:10vw; text-align:right; font-size:1rem;}
 
 .T2head{width:100%; text-align:center; font-size:2vw;}
 #addkeyForm {text-align:center;}
@@ -30,6 +31,8 @@ a {text-decoration: none;}
 .KeymanagerTop{width:100%; text-align:center; height:3vw;   display: flex; justify-content: center;flex-direction: column;align-items: center;}
 .keymanKeyHeader{width:100%; text-align:center; font-size:1.5vw;background-color:#000; margin-top:3vh;}
 .keymanagerTable {width:90%; margin:0 auto;}
+.keymanagerTablePC {width:50%; margin:2vh auto;}
+.keymanagerTable td {width: 1%;}
 .tableDesc{font-weight:bold; border-bottom:1px solid black;}
 .tableDesc td{border-bottom:1px solid black;}
 .deleteThis{cursor:pointer;}
@@ -41,8 +44,8 @@ a {text-decoration: none;}
     overflow-y: auto;
     height: 100%; 
 }
-
-
+.red{color:red;}
+.green{color:green;}
 	
 .AnonCoins{display:none; text-align:center;}
 .AnonCoinsTop{width:100%; text-align:center; height:3vw;   display: flex; justify-content: center;flex-direction: column; align-items: center;}
@@ -56,6 +59,7 @@ a {text-decoration: none;}
 .importExport{display:none;}
 .importExportTop{width:100%; text-align:center;  height:3vw;   display: flex; justify-content: center;flex-direction: column; margin-bottom:1vh; align-items: center;}
 #downloadJSONDIS{display:flex; margin-top:5vh; width:100%; height:auto; background-color:fff; padding:1vw; text-align:center; font-size:10px; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif;}
+#WalletURL{display:flex; margin-top:5vh; width:100%; height:auto; background-color:fff; padding:1vw; text-align:center; font-size:10px; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif; word-break: break-all;}
 #importJSONBTN{}
 #importJSON{display:block; width:100%; min-height:10vh; padding:0vw; margin-bottom:0vw;}
 .importwrapper{width:80%; margin:0 auto; text-align:center; margin-top:5vh;}
@@ -150,7 +154,6 @@ border: none;
 text-shadow: none;
 box-shadow: none;
 transition: all 0.12s linear 0s !important;
-font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .btn-cons {
 margin-right: 5px;

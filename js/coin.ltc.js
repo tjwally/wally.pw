@@ -34,7 +34,7 @@ getpubkeyBalanceLTC(LTCkeys[ltci].pubkey);
 //$(window).trigger("resize");
 ltci++;        
 if (ltci < LTCkeys.length) LTCBalancecrawler()
-}, Math.floor(Math.random() * 1000) + 100)
+}, Math.floor(Math.random() * 1000) + 1000)
 }
 }
 

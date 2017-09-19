@@ -34,7 +34,7 @@ getpubkeyBalanceBCH(BCHkeys[bchi].pubkey);
 //$(window).trigger("resize");
 bchi++;        
 if (bchi < BCHkeys.length) BCHBalancecrawler()
-}, Math.floor(Math.random() * 1000) + 100)
+}, Math.floor(Math.random() * 1000) + 1000)
 }
 }
 
