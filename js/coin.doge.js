@@ -69,7 +69,7 @@ dogeCoinWealth = 0;
 $('.keymanDOGEkeys > .Tabl3TR').children('.balanceC0unter').each(function () {
 var thisCoin = $(this).text();
 ////console.log(thisCoin);
-if (thisCoin > 0.001){dogeCoinWealth = parseFloat(dogeCoinWealth) + parseFloat($(this).text());}
+if (thisCoin > 0.00001){dogeCoinWealth = parseFloat(dogeCoinWealth) + parseFloat($(this).text());}
 });
 dogeCoinWealthFIAT = (dogeCoinWealth*rateDOGE).toFixed(4);
 dogeCoinWealthFIAT = ('$' + parseFloat(dogeCoinWealthFIAT, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
@@ -86,10 +86,8 @@ $(".keymanDOGEkeys .Tabl3TR .deleteThis").off();
 $(".keymanDOGEkeys .Tabl3TR .deleteThis").on('click', function() {
 //console.log("###DELETE KEY###");
 var todeleteaddress = $(this).attr("data-delkey")
-var index2del = DOGEkeys.some(function(item, index) { index2del = index; return item.pubkey == todeleteaddress; });
-if (!index2del) {
-    return false;
-}
+var index2del = arrayObjectIndexOf(DOGEkeys, todeleteaddress, "pubkey" ); 
+
 DOGEkeys.splice(index2del, 1);
 localStorage.setItem("DOGEkeys", JSON.stringify(DOGEkeys));
 $( ".DOGEsetENT"+todeleteaddress).remove();

@@ -41,6 +41,37 @@ if (i < BTCkeys.length) Balancecrawler()
 
 
 function getpubkeyBalanceBTC (btckeys, callback) {
+	
+jQuery.getJSON('https://counterpartychain.io/api/balances/'+btckeys,
+function(counterpartyCheck) {	
+for ( var member in counterpartyCheck.data) {
+        if (counterpartyCheck.data[member].asset == "LTBCOIN") {	
+		console.log(counterpartyCheck.data[member].asset);
+		cptoken = counterpartyCheck.data[member].asset;
+		cptokenbalance = counterpartyCheck.data[member].amount;
+		console.log(cptoken+" "+cptokenbalance);
+		loadwalletCounterParty(cptoken,cptokenbalance);
+		}
+		if (counterpartyCheck.data[member].asset == "FLDC") {	
+		console.log(counterpartyCheck.data[member].asset);
+		cptoken = counterpartyCheck.data[member].asset;
+		cptokenbalance = counterpartyCheck.data[member].amount;
+		console.log(cptoken+" "+cptokenbalance);
+		loadwalletCounterParty(cptoken,cptokenbalance);
+		}
+		if (counterpartyCheck.data[member].asset == "PEPECASH") {	
+		console.log(counterpartyCheck.data[member].asset);
+		cptoken = counterpartyCheck.data[member].asset;
+		cptokenbalance = counterpartyCheck.data[member].amount;
+		console.log(cptoken+" "+cptokenbalance);
+		loadwalletCounterParty(cptoken,cptokenbalance);
+		}		
+		
+		
+		
+}
+});
+	
 var addresscheck = "0";
 jQuery.getJSON('http://btc.blockdozer.com/insight-api/addr/'+btckeys,
 function(address) {
@@ -70,7 +101,7 @@ btcCoinWealth = 0;
 $('.keymanBTCkeys > .Tabl3TR').children('.balanceC0unter').each(function () {
 var thisCoin = $(this).text();
 ////console.log(thisCoin);
-if (thisCoin > 0.001){btcCoinWealth = parseFloat(btcCoinWealth) + parseFloat($(this).text());}
+if (thisCoin > 0.00001){btcCoinWealth = parseFloat(btcCoinWealth) + parseFloat($(this).text());}
 });
 btcCoinWealthFIAT = (btcCoinWealth*rateBTC).toFixed(4);
 btcCoinWealthFIAT = ('$' + parseFloat(btcCoinWealthFIAT, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
@@ -87,10 +118,9 @@ $(".keymanBTCkeys .Tabl3TR .deleteThis").off();
 $(".keymanBTCkeys .Tabl3TR .deleteThis").on('click', function() {
 //console.log("###DELETE KEY###");
 var todeleteaddress = $(this).attr("data-delkey")
-var index2del = BTCkeys.some(function(item, index) { index2del = index; return item.pubkey == todeleteaddress; });
-if (!index2del) {
-    return false;
-}
+var index2del = arrayObjectIndexOf(BTCkeys, todeleteaddress, "pubkey" ); 
+
+console.log("2del btc: "+index2del)
 BTCkeys.splice(index2del, 1);
 localStorage.setItem("BTCkeys", JSON.stringify(BTCkeys));
 $( ".BTCsetENT"+todeleteaddress).remove();

@@ -69,7 +69,7 @@ bchCoinWealth = 0;
 $('.keymanBCHkeys > .Tabl3TR').children('.balanceC0unter').each(function () {
 var thisCoin = $(this).text();
 ////console.log(thisCoin);
-if (thisCoin > 0.001){bchCoinWealth = parseFloat(bchCoinWealth) + parseFloat($(this).text());}
+if (thisCoin > 0.00001){bchCoinWealth = parseFloat(bchCoinWealth) + parseFloat($(this).text());}
 });
 bchCoinWealthFIAT = (bchCoinWealth*rateBCH).toFixed(4);
 bchCoinWealthFIAT = ('$' + parseFloat(bchCoinWealthFIAT, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
@@ -86,10 +86,8 @@ $(".keymanBCHkeys .Tabl3TR .deleteThis").off();
 $(".keymanBCHkeys .Tabl3TR .deleteThis").on('click', function() {
 //console.log("###DELETE KEY###");
 var todeleteaddress = $(this).attr("data-delkey")
-var index2del = BCHkeys.some(function(item, index) { index2del = index; return item.pubkey == todeleteaddress; });
-if (!index2del) {
-    return false;
-}
+var index2del = arrayObjectIndexOf(BCHkeys, todeleteaddress, "pubkey" ); 
+
 BCHkeys.splice(index2del, 1);
 localStorage.setItem("BCHkeys", JSON.stringify(BCHkeys));
 $( ".BCHsetENT"+todeleteaddress).remove();

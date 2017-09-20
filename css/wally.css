@@ -1,9 +1,7 @@
 html, body{
 	margin:0;
 	padding:0;
-
-overflow: hidden; 
-height:100%;
+	overflow: hidden; 
 }
 a {text-decoration: none;}
 a:visited {color:blue;}
@@ -20,7 +18,7 @@ a:visited {color:blue;}
 	min-height:100vh;
 	min-width:100vw;
 }
-#APIServerCheck{position:absolute; bottom:0px; right:0px; width:10vw; text-align:right; font-size:1rem;}
+
 
 .T2head{width:100%; text-align:center; font-size:2vw;}
 #addkeyForm {text-align:center;}
@@ -38,7 +36,7 @@ a:visited {color:blue;}
 .deleteThis{cursor:pointer;}
 #keymanagerWallets{    -webkit-flex: 1 1 auto;
     overflow-y: auto;
-    height: 80vh; }
+    height: 82vh; }
 #keymanagerWalletswrapper{
     -webkit-flex: 1 1 auto;
     overflow-y: auto;
@@ -58,11 +56,21 @@ a:visited {color:blue;}
 
 .importExport{display:none;}
 .importExportTop{width:100%; text-align:center;  height:3vw;   display: flex; justify-content: center;flex-direction: column; margin-bottom:1vh; align-items: center;}
+.importwrapper1{  
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 95vh;
+	}
+.importwrapper{   
+text-align:center;
+    height: auto; 
+}
+
+
 #downloadJSONDIS{display:flex; margin-top:5vh; width:100%; height:auto; background-color:fff; padding:1vw; text-align:center; font-size:10px; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif;}
 #WalletURL{display:flex; margin-top:5vh; width:100%; height:auto; background-color:fff; padding:1vw; text-align:center; font-size:10px; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif; word-break: break-all;}
 #importJSONBTN{}
 #importJSON{display:block; width:100%; min-height:10vh; padding:0vw; margin-bottom:0vw;}
-.importwrapper{width:80%; margin:0 auto; text-align:center; margin-top:5vh;}
 .leftP1 {
 }
 
@@ -80,7 +88,7 @@ a:visited {color:blue;}
 .settings div {padding-bottom:2vh;padding-top:2vh;}
 .wealthmeter{font-size:2vw; width:100%; text-align:center;     margin:0; height:3vw; padding-top:0vh; display: flex; justify-content: center;flex-direction: row; align-items: center;}
 .wealthCounter {display: flex; justify-content: center;flex-direction: row; align-items: center;}
-.WalletsTracked {position:absolute; bottom:0.1vh; left:0.1vw; font-size:0.8vw; display:flex;}
+
 #CoinOverView{
    display: -webkit-flex;
    display: flex;
@@ -94,7 +102,8 @@ a:visited {color:blue;}
    flex-flow: row wrap;
    -webkit-align-content: flex-start;
    align-content: flex-start;
-   height:100%;
+   height:auto;
+    flex: 1;
 }
 #CoinOverView .card{
 text-align:center;
@@ -106,9 +115,13 @@ margin-right: 1vw;
 padding:2vw;
 }
 #CoinOverViewWrapper{
+    display: -webkit-flex;
+    display: flex;
+	flex-direction: column;
     -webkit-flex: 1 1 auto;
+	flex: 1;
     overflow-y: auto;
-    height: 100%; 
+	
 }
 .coinWealth{font-size:2vw;}
 .coinAmount{font-size:1vw;}

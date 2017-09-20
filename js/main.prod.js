@@ -96,7 +96,29 @@ $.ajax({url: "http://bcc.blockdozer.com/insight-api/",
             }              
         }
  });
+   $.ajax({url: "https://counterpartychain.io/api/balances/",
+        type: "HEAD",
+        timeout:30000,
+        statusCode: {
+            200: function (response) {
+				$( "#counterpartychainio" ).addClass( "green" );
+				$( "#counterpartychainio" ).removeClass( "red" );				
+            },
+            404: function (response) {
+				$( "#counterpartychainio" ).addClass( "green" );
+				$( "#counterpartychainio" ).removeClass( "red" );	
+            },
+            400: function (response) {
+                console.log("counterpartychainio down :(");
+            },
+            0: function (response) {
+                console.log("counterpartychainio down :(");
+            }              
+        }
+ });
 }
+
+
 
 
 
@@ -136,6 +158,7 @@ wbk = wbk.replace(/"/g,"");
 var decodedString = b64dec(wbk);
 //console.log(decodedString); 
 localStorage.clear();
+anoncoins = [];
 	var importJSon = decodedString;
 	if(importJSon.indexOf("BTCSTART") != -1){	var BTCkeys=importJSon.substring(importJSon.lastIndexOf("##BTCSTART##")+12,importJSon.lastIndexOf("##BTCEND##"));	console.log("T0: "+BTCkeys); localStorage.setItem("BTCkeys", BTCkeys);}	
 	if(importJSon.indexOf("BCHSTART") != -1){	var BCHkeys=importJSon.substring(importJSon.lastIndexOf("##BCHSTART##")+12,importJSon.lastIndexOf("##BCHEND##"));	console.log("T0: "+BCHkeys); localStorage.setItem("BCHkeys", BCHkeys);}	
@@ -193,7 +216,7 @@ function priceCheck (callback) {
 console.log("###PRICE CHECK###");	
  jQuery.ajax({
     dataType: "json",
-    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,STORJ,XMR,ZEC,LTC,DOGE,ARDR,NXT&tsyms="+fiatCurrency,
+    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,STORJ,XMR,ZEC,LTC,DOGE,ARDR,NXT,LTBC,FLDC,PEPECASH&tsyms="+fiatCurrency,
     success: function( data ) { 
 	rateBTC = data['BTC'][fiatCurrency];
 	rateBCH = data['BCH'][fiatCurrency];
@@ -205,7 +228,10 @@ console.log("###PRICE CHECK###");
 	rateZEC = data['ZEC'][fiatCurrency];
 	rateARDR = data['ZEC'][fiatCurrency];
 	rateNXT = data['ZEC'][fiatCurrency];
-		callback();
+	rateLTBCOIN = data['LTBC'][fiatCurrency];
+	rateFLDC = data['FLDC'][fiatCurrency];
+	ratePEPECASH = data['PEPECASH'][fiatCurrency];	
+	callback();
 		}
 		});
 }
@@ -471,6 +497,7 @@ $('#downloadJSON').on('click', function() {
 
 $('#importJSONBTN').on('click', function() {	 
 	localStorage.clear();
+	anoncoins = [];
 	var importJSon = $('textarea#importJSON').val();
 	if(importJSon.indexOf("BTCSTART") != -1){	var BTCkeys=importJSon.substring(importJSon.lastIndexOf("##BTCSTART##")+12,importJSon.lastIndexOf("##BTCEND##"));	console.log("T0: "+BTCkeys); localStorage.setItem("BTCkeys", BTCkeys);}	
 	if(importJSon.indexOf("BCHSTART") != -1){	var BCHkeys=importJSon.substring(importJSon.lastIndexOf("##BCHSTART##")+12,importJSon.lastIndexOf("##BCHEND##"));	console.log("T0: "+BCHkeys); localStorage.setItem("BCHkeys", BCHkeys);}	
@@ -563,4 +590,9 @@ $('#addressdescription').val('');
 //Add Key
 
 
-
+function arrayObjectIndexOf(myArray, searchTerm, property) {
+    for(var i = 0, len = myArray.length; i < len; i++) {
+        if (myArray[i][property] === searchTerm) return i;
+    }
+    return -1;
+}

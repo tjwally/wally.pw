@@ -42,7 +42,7 @@ console.log(STORJCoinWealthFIAT);
 $('.keymanSTORJkeys > .Tabl3TR').children('.balanceC0unter').each(function () {
 var thisCoin = $(this).text();
 ////console.log(thisCoin);
-if (thisCoin > 0.001){storjCoinWealth = parseFloat(storjCoinWealth) + parseFloat($(this).text());}
+if (thisCoin > 0.00001){storjCoinWealth = parseFloat(storjCoinWealth) + parseFloat($(this).text());}
 STORJCoinWealthFIAT = (storjCoinWealth*rateSTORJ).toFixed(4);
 STORJCoinWealthFIAT = ('$' + parseFloat(STORJCoinWealthFIAT, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
 $('#STORJwealth').html(STORJCoinWealthFIAT + " " + fiatCurrency);

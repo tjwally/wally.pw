@@ -69,7 +69,7 @@ ltcCoinWealth = 0;
 $('.keymanLTCkeys > .Tabl3TR').children('.balanceC0unter').each(function () {
 var thisCoin = $(this).text();
 ////console.log(thisCoin);
-if (thisCoin > 0.001){ltcCoinWealth = parseFloat(ltcCoinWealth) + parseFloat($(this).text());}
+if (thisCoin > 0.00001){ltcCoinWealth = parseFloat(ltcCoinWealth) + parseFloat($(this).text());}
 });
 ltcCoinWealthFIAT = (ltcCoinWealth*rateLTC).toFixed(4);
 ltcCoinWealthFIAT = ('$' + parseFloat(ltcCoinWealthFIAT, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
@@ -86,10 +86,8 @@ $(".keymanLTCkeys .Tabl3TR .deleteThis").off();
 $(".keymanLTCkeys .Tabl3TR .deleteThis").on('click', function() {
 //console.log("###DELETE KEY###");
 var todeleteaddress = $(this).attr("data-delkey")
-var index2del = LTCkeys.some(function(item, index) { index2del = index; return item.pubkey == todeleteaddress; });
-if (!index2del) {
-    return false;
-}
+var index2del = arrayObjectIndexOf(LTCkeys, todeleteaddress, "pubkey" ); 
+
 LTCkeys.splice(index2del, 1);
 localStorage.setItem("LTCkeys", JSON.stringify(LTCkeys));
 $( ".LTCsetENT"+todeleteaddress).remove();

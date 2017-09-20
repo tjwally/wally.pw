@@ -1,45 +1,48 @@
 function getAnonCoins (callback) {
 if (localStorage.getItem("anoncoins") === null) {
 console.log("###NO anoncoins DATA###");
-anoncoins = [{coin:"XMR", name:"Monero", balance:"0"},{coin:"ZEC", name:"ZCash", balance:"0"},{coin:"ARDR", name:"Ardor", balance:"0"},{coin:"NXT", name:"NXT", balance:"0"}];
-
+anoncoins = [];
 console.log(anoncoins);
+var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "NXT"; });
+console.log("twoadd1 "+twoadd);
+if (twoadd === false){anoncoins.push({coin:"NXT", name:"NXT", balance:"0"});}
+var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "ARDR"; });
+console.log("twoadd1 "+twoadd);
+if (twoadd === false){anoncoins.push({coin:"ARDR", name:"Ardor", balance:"0"});}
+var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "ZEC"; });
+console.log("twoadd1 "+twoadd);
+if (twoadd === false){anoncoins.push({coin:"ZEC", name:"ZCash", balance:"0"});}
+var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "XMR"; });
+console.log("twoadd1 "+twoadd);
+if (twoadd === false){anoncoins.push({coin:"XMR", name:"Monero", balance:"0"});}
+localStorage.setItem("anoncoins",  JSON.stringify(anoncoins));
 } else {
 anoncoins = JSON.parse(localStorage.getItem("anoncoins"));
+var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "NXT"; });
+console.log("twoadd "+twoadd);
+if (twoadd === false){anoncoins.push({coin:"NXT", name:"NXT", balance:"0"});}
+var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "ARDR"; });
+console.log("twoadd "+twoadd);
+if (twoadd === false){anoncoins.push({coin:"ARDR", name:"Ardor", balance:"0"});}
+var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "ZEC"; });
+console.log("twoadd "+twoadd);
+if (twoadd === false){anoncoins.push({coin:"ZEC", name:"ZCash", balance:"0"});}
+var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "XMR"; });
+console.log("twoadd "+twoadd);
+if (twoadd === false){anoncoins.push({coin:"XMR", name:"Monero", balance:"0"});}
 
-var a = [{name:"bull"},
-    { name: "tom", text: "tasty" },
-    { name: "tom", text: "tasty" }
-]
-var twoadd = anoncoins.findIndex(x => x.coin=="NXT")
-if (twoadd === -1){anoncoins.push({coin:"NXT", name:"NXT", balance:"0"});}
-var twoadd = anoncoins.findIndex(x => x.coin=="ARDR")
-if (twoadd === -1){anoncoins.push({coin:"ARDR", name:"Ardor", balance:"0"});}
-var twoadd = anoncoins.findIndex(x => x.coin=="ZEC")
-if (twoadd === -1){anoncoins.push({coin:"ZEC", name:"ZCash", balance:"0"});}
-var twoadd = anoncoins.findIndex(x => x.coin=="ZEC")
-if (twoadd === -1){anoncoins.push({coin:"XMR", name:"Monero", balance:"0"});}
-
-
-console.log(anoncoins);
 }
-buildAnonCoins();
+setTimeout(buildAnonCoins, 500);
 callback();
 }
 
 function buildAnonCoins (callback) {
-anonheader = 0;
-if (anonheader === 0){
-var $container = $("#anonC0ins");
-$container.append("<table class=\"keymanagerTablePC \">"
-+ "<tr class=\"tableDesc\"><td>Name</td><td>Symbol</td><td>Balance</td></tr>"
-+ "<tbody class=\"keymanan0nkeys\"></table>");
-anonheader = 1;
-}
 var anC1 = 0;    
+if (anoncoins.length > 0){
 anonCoinBalancecrawler();
+}
 function anonCoinBalancecrawler() {
-var $container = $(".keymanan0nkeys");
+$container = $(".keymanan0nkeys");
 $container.append("<tr class=\"Tabl3TR\">"
 +"<td class=\"\">"+anoncoins[anC1].name+"</td>"
 +"<td class=\"\">"+anoncoins[anC1].coin+"</td>"
@@ -95,17 +98,11 @@ $("input[name=ancoinBalUpdater]").off();
 $("input[name=ancoinBalUpdater]").on('change', function() {
 var balance = $(this).val();
 console.log("thisbal "+balance);
-var coin = $(this).attr("data-coin")
+var thiscoin = $(this).attr("data-coin")
 var name = $(this).attr("data-cname")
-console.log(name);
-
-var index2del = anoncoins.some(function(item, index) { index2del = index; return item.name == name; });
-if (!index2del) {
-    return false;
-}
-
+var index2del = arrayObjectIndexOf(anoncoins, thiscoin, "coin" ); 
 anoncoins.splice(index2del, 1);
-anoncoins.push({coin : coin, name : name, balance : balance});
+anoncoins.push({coin : thiscoin, name : name, balance : balance});
 localStorage.setItem("anoncoins", JSON.stringify(anoncoins));
 });
 setTimeout(RefreshAnonPrices, 1000);

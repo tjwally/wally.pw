@@ -12,6 +12,7 @@
 <script src="js/coin.eth.js"></script>
 <script src="js/coin.doge.js"></script>
 <script src="js/tokens.eth.js"></script>
+<script src="js/tokens.counterparty.js"></script>
 <script src="js/anon.coins.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
@@ -51,9 +52,22 @@ getWallyTheme();
 <div class="leftP1 col-xs-10 col--no-gutter mainScreen theme_backgroundcolor1 theme_color1 theme_font1"><div class="wealthmeter theme_font2 theme_color2 theme_backgroundcolor2">Richness: <span class="wealthCounter">0</span></div>
 <div id="CoinOverViewWrapper"> 
 <div id="CoinOverView" class=""></div>
+
+<div id="APIServerCheck">
+<div class="WalletsTracked"></div><br>
+API Server Status:
+<div id="cryptocompare" class="red">min-api.cryptocompare.com</div>
+<div id="ethplorer" class="red">api.ethplorer.io</div>
+<div id="bccblockdozer" class="red">bcc.blockdozer.com</div>
+<div id="btcblockdozer" class="red">btc.blockdozer.com</div>
+<div id="chainso" class="red">chain.so</div>
+<div id="counterpartychainio" class="red">counterpartychain.io</div>
 </div>
-<div class="WalletsTracked"></div>
 </div>
+</div>
+
+
+
 
 <!-- Key Manager  -->
 <div class="keymanager leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
@@ -85,7 +99,11 @@ getWallyTheme();
 <div class="AnonCoins leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
 <div class="AnonCoinsTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Unsupervised Cryptos</span></div></div>
 <p>These Coins have privacy features that don't allow balance tracking or no public API service.</p>
-<div id="anonC0ins"></div>
+<div id="anonC0ins">
+<table class="keymanagerTablePC">
+<tr class="tableDesc"><td>Name</td><td>Symbol</td><td>Balance</td></tr>
+<tbody class="keymanan0nkeys"></table>
+</div>
 </div>
 <!-- AnonCoins -->
 
@@ -120,6 +138,7 @@ getWallyTheme();
 <!-- Import/Export -->
 <div class="importExport leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
 <div class="importExportTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Import/Export</span></div></div>
+<div class="importwrapper1">
 <div class="importwrapper">
 <textarea id="importJSON" placeholder="paste your JSON backup here"></textarea>
 <div class="btn btn-b1 btn-cons" id="importJSONBTN">Import JSON Backup</div>
@@ -127,6 +146,7 @@ getWallyTheme();
 <div class="btn btn-b1  btn-cons" id="downloadJSON">Generate JSON Backup</div>
 <code id="WalletURL"></code>
 <div class="btn btn-b1  btn-cons" id="generateURL">Generate Wallet URL</div>
+</div>
 </div>
 </div>
 <!-- Import/Export -->
@@ -143,15 +163,6 @@ getWallyTheme();
 <div class="P1BTN abountBTN theme_font3">About</div>
 </div>
 
-<div id="APIServerCheck">
-API Server Status:
-<div id="cryptocompare" class="red">min-api.cryptocompare.com</div>
-<div id="ethplorer" class="red">api.ethplorer.io</div>
-<div id="bccblockdozer" class="red">bcc.blockdozer.com</div>
-<div id="btcblockdozer" class="red">btc.blockdozer.com</div>
-<div id="chainso" class="red">chain.so</div>
-</div>
-
 </div>  
 <!-- Right Menu -->
 </div>
@@ -164,7 +175,7 @@ code @ <a target="_blank" href="https://github.com/tjwally/wally.pw">https://git
 Wally - The HODL Wallet is distributed under the <a href="LICENSE">MIT software license</a>.</p>
 <p>Wally is using data from these sources:<br>
 <a target="_blank" href="cryptocompare.com">cryptocompare.com</a> for price data and 
-<a href="blockdozer.com">blockdozer.com</a>, <a href="chain.so">chain.so</a>, <a href="ethplorer.io">ethplorer.io</a> for coin data.</p>
+<a href="blockdozer.com">blockdozer.com</a>, <a href="chain.so">chain.so</a>, <a href="ethplorer.io">ethplorer.io</a>, <a href="counterpartychain.io">counterpartychain.io</a> for coin data.</p>
 <p>
 Wally also uses <a target="_blank" href="jquery.org">jQuery</a> and <a target="_blank" href="http://robinparisi.github.io/tingle/">tingle.js</a> 
 </p>

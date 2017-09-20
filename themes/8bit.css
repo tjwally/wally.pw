@@ -5,7 +5,7 @@
 html, body{
 background-color:#000;
 }
-
+a, a:visited{color:green;}
 
 .theme_font1{		font-family: 'VT323', monospace;	font-size:2vw;		}
 .theme_font2{		font-family: 'Press Start 2P', cursive;, sans-serif;	font-size:1.5vw;		}
@@ -32,19 +32,38 @@ td{color:#00D400;}
 .activeBTN {cursor:default;font-weight:bold;color:#078E10; }
 .activeBTN:hover {  color:#078E10; background-color:#000;}
 
-.tingle-modal-box {
-  border-radius: 0px;
-}
 
-.theme_Select{
-   -webkit-appearance: menulist-button;
-   height: 3vh;
+button{
+   height: auto;
    color:#fff;
    background-color:#071207;
-   font-family: 'Press Start 2P', cursive;, sans-serif;
+   font-family: 'VT323', monospace;
    border:1px solid green;
+   font-size:1vw;
+}
+input{
+   height: 1.5vw;
+   color:#fff;
+   background-color:#071207;
+   font-family: 'VT323', monospace;
+   border:1px solid green;
+   font-size:1vw;
+}
+select{
+   -webkit-appearance: menulist-button;
+   height: 1.5vw;
+   color:#fff;
+   background-color:#071207;
+   font-family: 'VT323', monospace;
+   border:1px solid green;
+      font-size:1vw;
 }
 
-.btn{font-family: 'Press Start 2P', cursive;, sans-serif;}
-.tingle-modal{font-family: 'Press Start 2P', cursive;, sans-serif; color:red;}
-.tingle-modal-box{background-color:darkred;}
+.btn{font-family: 'Press Start 2P', cursive;, sans-serif; }
+.tingle-btn{font-size:1rem; font-family: 'Press Start 2P', cursive;, sans-serif;}
+.tingle-modal{font-family: 'Press Start 2P', cursive;, sans-serif; color:red;font-size:1rem;}
+.tingle-modal-box{background-color:darkred; border-radius: 0px;}
+
+#APIServerCheck{font-size:1rem; position:absolute; bottom:0px; left:0px; margin-top: auto; }
+#APIServerCheck div {display:inline-block;}
+.WalletsTracked {display:block;}
