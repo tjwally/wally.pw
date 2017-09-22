@@ -234,7 +234,7 @@ function priceCheck (callback) {
 console.log("###PRICE CHECK###");	
  jQuery.ajax({
     dataType: "json",
-    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,STORJ,XMR,ZEC,LTC,DOGE,ARDR,NXT,LTBC,FLDC,PEPECASH,NXS,EOS,ICN&tsyms="+fiatCurrency,
+    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,STORJ,XMR,ZEC,LTC,DOGE,ARDR,NXT,LTBC,FLDC,PEPECASH,NXS,EOS,ICN,GNO,MLN&tsyms="+fiatCurrency,
     success: function( data ) { 
 	rateBTC = data['BTC'][fiatCurrency];
 	rateBCH = data['BCH'][fiatCurrency];
@@ -252,6 +252,8 @@ console.log("###PRICE CHECK###");
 	rateEOS = data['EOS'][fiatCurrency];
 	rateNXS = data['NXS'][fiatCurrency];
 	rateICN = data['ICN'][fiatCurrency];
+	rateMLN = data['MLN'][fiatCurrency];
+	rateGNO = data['GNO'][fiatCurrency];
 	callback();
 		}
 		});

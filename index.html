@@ -20,7 +20,7 @@ $( document ).ready(function() {
 function getWallyTheme () {
 if (localStorage.getItem("wallyTheme") === null) {
 console.log("###NO wally theme DATA###");
-wallyTheme = "salzberg";
+wallyTheme = "8bit";
 loadjscssfile("themes/"+wallyTheme+".css", "css")
 } else {
 wallyTheme = localStorage.getItem("wallyTheme");
@@ -127,10 +127,9 @@ getWallyTheme();
 <label for="themeselect">Theme</label>
  <select name="themeselect" class="theme_Select" id="themeselect">
   <option value="8bit">8bit</option>
-  <option value="classic">classic</option>
-   <option value="karpeles">karpeles</option>
-   <option value="salzberg">salzberg</option>
-   </select> 
+  <option value="karpeles">karpeles</option>
+  <option value="salzberg">salzberg</option>
+ </select> 
 </div>
 
 <div class="reloadBTN btn btn-b1 btn-cons">Reload Wally</div>

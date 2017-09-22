@@ -59,6 +59,16 @@ for ( var member in address.tokens) {
 		ethTokenbalance = address.tokens[member].balance;
 		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
 		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
+        if (address.tokens[member].tokenInfo.symbol == "MLN") {	
+		ethTokenaddress = address.tokens[member].tokenInfo.address;
+		ethTokenbalance = address.tokens[member].balance;
+		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
+		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
+        if (address.tokens[member].tokenInfo.symbol == "GNO") {	
+		ethTokenaddress = address.tokens[member].tokenInfo.address;
+		ethTokenbalance = address.tokens[member].balance;
+		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
+		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
 }		
 thisbalance = address['ETH']['balance'];
 	
