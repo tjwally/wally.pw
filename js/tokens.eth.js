@@ -24,7 +24,7 @@ getETHTokenWalletsBalance(ethTokenSymbol, ethTokenbalance, thisETHaddress);
 
 
 function getETHTokenWalletsBalance (callback) {
-if (ethTokenSymbol == "EOS" || ethTokenSymbol == "ICN"){
+if (ethTokenSymbol == "EOS" || ethTokenSymbol == "ICN" || ethTokenSymbol == "MLN" || ethTokenSymbol == "GNO"){
 ethTokenbalance = (ethTokenbalance/1000000000000000000);	
 }
 else{

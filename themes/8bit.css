@@ -22,8 +22,8 @@ a {text-decoration: none;}
 .MenuBarR		{flex:0;align-items: center text-align:left; width:100%; padding-top:20vh;}
 
 .topContentbar  { height:10vh; width:100%;	display: flex; justify-content: center;flex-direction: row; align-items: center; font-size:3vw;}
-.card {margin-left:3vw; margin-right:3vw; min-height: -webkit-min-content;width:12vw;max-width:15vw;text-align:center; margin-bottom:1.5vh; 
-margin-top:1.5vh; border:0px solid #001B00; background-color:#; padding:1vw;}
+.card {margin-left:1.5vw; margin-right:1.5vw; min-height: -webkit-min-content;width:12vw;max-width:12vw;text-align:center; margin-bottom:1.5vh; 
+margin-top:1.5vh; border:0px solid #001B00; background-color:#; padding:0.5vw;}
 .card img {max-width:100%; max-height:5vh; padding-bottom:0.2vh}
 .coinWealth {font-size:2vw;}
 .coinAmount	{font-size:1.5vw;}
