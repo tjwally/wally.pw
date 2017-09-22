@@ -47,7 +47,7 @@ thisETHTOkenWealth = 0;
 thisETHTOkenWealthFIAT = 0;
 $('.keymanETHTokens > .Tabl3TR').children('.balanceC0unter'+ethTokenSymbol+'').each(function () {
 var thisETHtoken = $(this).text();
-if (thisETHtoken > 0.001){thisETHTOkenWealth = parseFloat(thisETHTOkenWealth) + parseFloat($(this).text());}
+if (thisETHtoken > 0.00001){thisETHTOkenWealth = parseFloat(thisETHTOkenWealth) + parseFloat($(this).text());}
 thisETHTOkenWealthFIAT = (thisETHTOkenWealth*eval(thisETHrate)).toFixed(4);
 $('.'+ethTokenSymbol+'card').attr('data-balance', thisETHTOkenWealthFIAT);
 thisETHTOkenWealthFIAT = ('$' + parseFloat(thisETHTOkenWealthFIAT, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());

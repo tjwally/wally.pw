@@ -43,6 +43,16 @@ function getpubkeyBalanceETH (thisETHaddress, callback) {
 var addresscheck = "0";
 jQuery.getJSON('https://api.ethplorer.io/getAddressInfo/'+thisETHaddress+'?apiKey=freekey',
 function(address) {
+		
+thisbalance = address['ETH']['balance'];
+	
+thisbalanceETHSettings = thisbalance;
+thisbalance = (thisbalance*rateETH).toFixed(4);
+richness = parseFloat(richness) + parseFloat(thisbalance);
+thisbalance = ('$' + parseFloat(thisbalance, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
+addresscheck = thisbalance;
+balanceUpdaterETH(thisETHaddress, thisbalance, richness, thisbalanceETHSettings);
+
 for ( var member in address.tokens) {
         if (address.tokens[member].tokenInfo.symbol == "STORJ") {	
 		ethTokenaddress = address.tokens[member].tokenInfo.address;
@@ -69,19 +79,13 @@ for ( var member in address.tokens) {
 		ethTokenbalance = address.tokens[member].balance;
 		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
 		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
-}		
-thisbalance = address['ETH']['balance'];
-	
-thisbalanceETHSettings = thisbalance;
-thisbalance = (thisbalance*rateETH).toFixed(4);
-richness = parseFloat(richness) + parseFloat(thisbalance);
-thisbalance = ('$' + parseFloat(thisbalance, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
-addresscheck = thisbalance;
-balanceUpdaterETH(thisETHaddress, thisbalance, richness, thisbalanceETHSettings);
+}
+
+
 });
 }
 
-function balanceUpdaterETH () {
+function balanceUpdaterETH (thisETHaddress) {
 richnescalc = ('$' + parseFloat(richness, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
 $('.wealthCounter').html(richnescalc + " " + fiatCurrency);
 $('.ETHkeybalance' + thisETHaddress).html(thisbalanceETHSettings);

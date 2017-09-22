@@ -34,7 +34,7 @@ getpubkeyBalanceLTC(LTCkeys[ltci].pubkey);
 //$(window).trigger("resize");
 ltci++;        
 if (ltci < LTCkeys.length) LTCBalancecrawler()
-}, Math.floor(Math.random() * 1000) + 1000)
+}, Math.floor(Math.random() * 1000) + 2000)
 }
 }
 
@@ -54,7 +54,7 @@ balanceUpdaterLTC(thisLTCaddress, thisbalance, richness, thisbalanceLTCSettings)
 });
 }
 
-function balanceUpdaterLTC () {
+function balanceUpdaterLTC (thisLTCaddress, thisbalance, richness, thisbalanceLTCSettings) {
 richnescalc = ('$' + parseFloat(richness, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
 $('.wealthCounter').html(richnescalc + " " + fiatCurrency);
 $('.LTCkeybalance' + thisLTCaddress).html(thisbalanceLTCSettings);

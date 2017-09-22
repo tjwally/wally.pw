@@ -501,19 +501,19 @@ localStorage.setItem('wallyTheme', themeselectSEL)
 $( document ).ready(function() {
 $('#downloadJSON').on('click', function() {	 
  		var BTCkeys = localStorage.getItem("BTCkeys");	
-		if (BTCkeys) {var BTCkeys = "##BTCSTART##"+BTCkeys+"##BTCEND##<br>";}else{BTCkeys=""};
+		if (BTCkeys) {var BTCkeys = "##BTCSTART##"+BTCkeys+"##BTCEND##";}else{BTCkeys=""};
 		var BCHkeys = localStorage.getItem("BCHkeys");	
-		if (BCHkeys) {var BCHkeys = "##BCHSTART##"+BCHkeys+"##BCHEND##<br>";}else{BCHkeys=""};
+		if (BCHkeys) {var BCHkeys = "##BCHSTART##"+BCHkeys+"##BCHEND##";}else{BCHkeys=""};
 		var LTCkeys = localStorage.getItem("LTCkeys");	
-		if (LTCkeys) {var LTCkeys = "##LTCSTART##"+LTCkeys+"##LTCEND##<br>";}else{LTCkeys=""};
+		if (LTCkeys) {var LTCkeys = "##LTCSTART##"+LTCkeys+"##LTCEND##";}else{LTCkeys=""};
 		var DOGEkeys = localStorage.getItem("DOGEkeys");	
-		if (DOGEkeys) {var DOGEkeys = "##DOGESTART##"+DOGEkeys+"##DOGEEND##<br>";}else{DOGEkeys=""};
+		if (DOGEkeys) {var DOGEkeys = "##DOGESTART##"+DOGEkeys+"##DOGEEND##";}else{DOGEkeys=""};
 		var ETHkeys = localStorage.getItem("ETHkeys");	
-		if (ETHkeys) {var ETHkeys = "##ETHSTART##"+ETHkeys+"##ETHEND##<br>";}else{ETHkeys=""};
-		var fiatCurrencyexp = "##S_FCSTART##"+fiatCurrency+"##S_FCEND##<br>";
-		var wallyThemeexp = "##S_WTSTART##"+wallyTheme+"##S_WTEND##<br>";
+		if (ETHkeys) {var ETHkeys = "##ETHSTART##"+ETHkeys+"##ETHEND##";}else{ETHkeys=""};
+		var fiatCurrencyexp = "##S_FCSTART##"+fiatCurrency+"##S_FCEND##";
+		var wallyThemeexp = "##S_WTSTART##"+wallyTheme+"##S_WTEND##";
 		var anoncoins = localStorage.getItem("anoncoins");	
-		if (anoncoins) {var anoncoins = "##A_CSTART##"+anoncoins+"##A_CEND##<br>";}else{anoncoins=""};	
+		if (anoncoins) {var anoncoins = "##A_CSTART##"+anoncoins+"##A_CEND##";}else{anoncoins=""};	
 		//var url = "data:application/octet-stream;base64," + Base64.encode(data);
 		$('#downloadJSONDIS').html(BTCkeys+BCHkeys+LTCkeys+DOGEkeys+ETHkeys+fiatCurrencyexp+wallyThemeexp+anoncoins);
 });

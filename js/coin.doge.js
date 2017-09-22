@@ -30,7 +30,7 @@ $container.append("<tr class=\"Tabl3TR DOGEsetENT"+DOGEkeys[dogei].pubkey+"\">"
 getpubkeyBalanceDOGE(DOGEkeys[dogei].pubkey);
 dogei++;        
 if (dogei < DOGEkeys.length) DOGEBalancecrawler()
-}, Math.floor(Math.random() * 1000) + 1000)
+}, Math.floor(Math.random() * 1000) + 3000)
 }
 }
 
@@ -50,7 +50,7 @@ balanceUpdaterDOGE(thisDOGEaddress, thisbalance, richness, thisbalanceDOGESettin
 });
 }
 
-function balanceUpdaterDOGE () {
+function balanceUpdaterDOGE (thisDOGEaddress, thisbalance, richness, thisbalanceDOGESettings) {
 richnescalc = ('$' + parseFloat(richness, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
 $('.wealthCounter').html(richnescalc + " " + fiatCurrency);
 $('.DOGEkeybalance' + thisDOGEaddress).html(thisbalanceDOGESettings);
