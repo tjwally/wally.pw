@@ -1,13 +1,13 @@
 ltcCoinWealth = 0;
 function loadkeysLTC (callback) {
 var $container = $("#keymanagerWallets");
-$container.append("<div class=\"keymanKeyHeader theme_backgroundcolor3\">Litecoin Keys</div>"
+$container.append("<div class=\"keymanKeyHeader\">Litecoin Keys</div>"
 +"<table class=\"keymanagerTable \">"
-+ "<tr class=\"tableDesc\"><td>PubKey</td><td>Description</td><td>Balance</td><td>Delete</td></tr>"
++ "<tr class=\"tableDesc\"><td class=\"pubkey\">PubKey</td><td class=\"coindesc\">Description</td><td class=\"coinbalance\">Balance</td><td class=\"delcoin\">Delete</td></tr>"
 + "<tbody class=\"keymanLTCkeys\"></table>");
 var $container = $("#CoinOverView");
 $container.append("<div class=\"card LTCcard\">"
-+"<img src=\"images/logos/litecoin.png\">"
++"<div class=\"coinLogo\"><img src=\"images/logos/litecoin.png\"></div>"
 +"<div class=\"coinWealth\" id=\"LTCwealth\">0.00</div>"
 +"<div class=\"coinAmount\" id=\"LTCamount\">0.00</div>"
 +"<div class=\"thiscoinprice\">1 Litecoin = "+rateLTC+" "+fiatCurrency+"</div>"
@@ -72,12 +72,14 @@ var thisCoin = $(this).text();
 if (thisCoin > 0.00001){ltcCoinWealth = parseFloat(ltcCoinWealth) + parseFloat($(this).text());}
 });
 ltcCoinWealthFIAT = (ltcCoinWealth*rateLTC).toFixed(4);
+$('.LTCcard').attr('data-balance', ltcCoinWealthFIAT);
 ltcCoinWealthFIAT = ('$' + parseFloat(ltcCoinWealthFIAT, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
 $('#LTCwealth').html(ltcCoinWealthFIAT + " " + fiatCurrency);
 $('#LTCamount').html(ltcCoinWealth);
 ////console.log("###ltcCoinWealth BALANCE "+ltcCoinWealth+"###");
 /* get ltc wealth*/
 RefreshLTCListeners();
+sortByBalance();
 }
 
 

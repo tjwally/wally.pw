@@ -1,31 +1,110 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
+@import url('https://fonts.googleapis.com/css?family=VT323');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
-html, body{
-background-color:#;
+a, a:visited{color:green;}
+a {text-decoration: none;}
+
+.top_bar_bg 	{ background-color:darkgreen;}
+.top_bar_font 	{ font-family: 'VT323', monospace;	font-size:2vw;}
+.top_bar_color 	{ color:#00FF00;}
+
+.content_bg		{ background-color:#063106;}
+.content_font 	{ font-family: 'VT323', monospace;	font-size:1vw;}
+.content_color 	{ color:#fff;}
+
+.sidebar_font 	{ font-family: 'VT323', monospace;	font-size:2vw;}
+.sidebar_color 	{ color:#fff;}
+.sidebar_bg		{ background-color:black;}
+
+.logo			{align-self: center; flex:auto;  text-align:left; padding-top:2vh; max-height:10vh;}	
+.logo span		{align-self: right; flex:auto; }
+.logo_color		{color:#fff;}
+.logo_font		{font-family: 'Press Start 2P', cursive;, sans-serif;	font-size:2vw;}
+.logo_font span {font-size:1vw; display:block;}
+.MenuBarR		{flex:auto; align-self:center; text-align:left; width:100%;}
+.P1BTN			{padding-top:2vh;}
+
+.topContentbar  { height:10vh; width:100%;	display: flex; justify-content: center;flex-direction: row; align-items: center; font-size:3vw;}
+.card {margin-left:3vw; margin-right:3vw; min-height: -webkit-min-content;width:12vw;max-width:15vw;text-align:center; margin-bottom:1.5vh; 
+margin-top:1.5vh; border:0px solid #001B00; background-color:#; padding:1vw;}
+.card img {max-width:100%; max-height:5vh; padding-bottom:0.2vh}
+.coinWealth {font-size:2vw;}
+.coinAmount	{font-size:1.5vw;}
+.coinLogo{ border-bottom:3px dashed #fff; padding-bottom:2px;max-height:5vh;min-height:5vh; display: flex;flex-direction: column; align-items: center; justify-content:flex-end;}
+
+.P1BTN {cursor:pointer; color:#fff; padding-left:2vw;}
+.P1BTN:hover {color:#00D400; background-color:#071207;}
+.activeBTN {cursor:default;font-weight:normal;color:#078E10; }
+.activeBTN:hover {  color:#078E10; background-color:#000;}
+
+
+.keymanKeyHeader {text-align:left; font-size:1.5vw; background-color:darkgreen; width:80%; margin: 0 auto;}
+#keymanagerWallets {padding-bottom:2vh;}
+#keymanagerWallets table {width:80%; margin: 0 auto; border-collapse: collapse;}
+#keymanagerWallets table tr{ padding:0; margin:0;}
+#keymanagerWallets table .pubkey{width:40%;background-color:#000; font-weight:bold;}
+#keymanagerWallets table .coindesc{width:30%;background-color:#000; font-weight:bold;}
+#keymanagerWallets table .coinbalance{width:20%;background-color:#000; font-weight:bold;}
+#keymanagerWallets table .delcoin{width:10%;background-color:#000; font-weight:bold;}
+#keymanagerWallets table td{color:#00D400; padding:0; margin:0;}
+#addkeyForm {text-align:center;}
+#coinpubkey {width:25%;}
+#addressdescription {width:15%;}
+
+button{   height: auto;   color:#fff;   background-color:#071207;   font-family: 'VT323', monospace;   border:1px solid green;   font-size:1vw;}
+input{   height: 1.5vw;   color:#fff;   background-color:#071207;   font-family: 'VT323', monospace;   border:1px solid green;   font-size:1vw;}
+select{   -webkit-appearance: menulist-button;   height: 1.5vw;   color:#fff;   background-color:#071207;   font-family: 'VT323', monospace;   border:1px solid green;      font-size:1vw;}
+
+.AnonCoins{display:none; text-align:center;}
+.AnonCoins table {width:80%; margin: 0 auto; border-collapse: collapse; font-size:1vw;}
+.AnonCoins table tr{ padding:0; margin:0;}
+.AnonCoins table td{ width:1%; text-align:center; background-color:darkgreen; color:#00D400;}
+.keymanagerTablePC .tableDesc {font-weight:bold;background-color:#000; color:#fff; }
+
+
+.wallysettings{display:none; text-align:center;}
+.resetBTN{margin:0 auto; margin-top:5vh; display:block; width:50vw;display:block;}
+.reloadBTN{margin:0 auto; margin-top:5vh; display:block; width:50vw; display:block;}
+.btn{font-family: 'Press Start 2P', cursive;, sans-serif; }
+
+.importExport{display:none; text-align:center;}
+#downloadJSONDIS{margin-top:5vh; width:80%; height:auto; background-color:fff; text-align:center; font-size:0.8vw; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif;}
+#WalletURL{margin-top:5vh; width:80%; height:auto; background-color:fff; text-align:center; font-size:0.8vw; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif; word-break: break-all;}
+#importJSONBTN{}
+#importJSON{width:80%; min-height:10vh; padding:0vw;  margin-top:2vh;}
+
+
+
+.tingle-btn{font-size:0.8vw; font-family: 'Press Start 2P', cursive;, sans-serif;}
+.tingle-modal{font-family: 'Press Start 2P', cursive;, sans-serif; color:red;font-size:0.8vw;}
+.tingle-modal-box{background-color:darkred; border-radius: 0px;}
+
+.offlineIndicator{color:red;}
+.onlineIndicator{color:white;}
+
+
+.btn {
+display: inline-block;
+padding: 9px 12px;
+padding-top: 7px;
+margin-bottom: 0;
+font-size: 0.8vw;
+line-height: 20px;
+color: #5e5e5e;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+background-color: #d1dade;
+-webkit-border-radius: 0px;
+-webkit-border-radius: 0px;
+-webkit-border-radius: 0px;
+background-image: none !important;
+border: none;
+text-shadow: none;
+box-shadow: none;
+transition: all 0.12s linear 0s !important;
 }
-
-
-.theme_font1{		    font-family: Tahoma,Verdana,Segoe,sans-serif;	}
-.theme_font2{			font-family: Tahoma,Verdana,Segoe,sans-serif;	font-size:1.5vw;		}
-.theme_font3{			font-family: Tahoma,Verdana,Segoe,sans-serif;font-size:1.5vw;	}
-.theme_font4{			font-family: 'Montserrat Alternates', sans-serif;	font-size:2vw;	}
-.tingle-btn {		font-family: 'Montserrat Alternates', sans-serif;}
-
-.theme_logo1{font-size:4vw;	}
-.theme_logo2{font-size:1vw;	}
-
-.theme_backgroundcolor1{ background-color:#ccc;}
-.theme_backgroundcolor2{ background-color:#354251;}
-.theme_backgroundcolor3{ background-color:#354251;}
-
-.theme_color1{}
-.theme_color2{color:#fff;}
-.theme_color3{color:#fff;}
-
-td{color:black;}
-#CoinOverView .card img {max-height:30%;}
-
-.P1BTN {cursor:pointer; color:#fff;}
-.P1BTN:hover {color:white; background-color:black;}
-.activeBTN {cursor:default;font-weight:bold;color:#078E10; }
-.activeBTN:hover {  color:#078E10; background-color:#354251;}
+.btn-cons {margin-right: 5px;min-width: 120px;margin-bottom: 8px;}
+.btn-danger {color: #fff;background-color: #d9534f;border-color: #d43f3a;}
+.btn-b1 {color: #fff;background: rgb(66, 184, 221);border-color: #d43f3a;}

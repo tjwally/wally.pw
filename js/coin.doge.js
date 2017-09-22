@@ -1,13 +1,13 @@
 dogeCoinWealth = 0;
 function loadkeysDOGE (callback) {
 var $container = $("#keymanagerWallets");
-$container.append("<div class=\"keymanKeyHeader theme_backgroundcolor3\">Doge Keys</div>"
+$container.append("<div class=\"keymanKeyHeader\">Doge Keys</div>"
 +"<table class=\"keymanagerTable \">"
-+ "<tr class=\"tableDesc\"><td>PubKey</td><td>Description</td><td>Balance</td><td>Delete</td></tr>"
++ "<tr class=\"tableDesc\"><td class=\"pubkey\">PubKey</td><td class=\"coindesc\">Description</td><td class=\"coinbalance\">Balance</td><td class=\"delcoin\">Delete</td></tr>"
 + "<tbody class=\"keymanDOGEkeys\"></table>");
 var $container = $("#CoinOverView");
 $container.append("<div class=\"card DOGEcard\">"
-+"<img src=\"images/logos/doge.png\">"
++"<div class=\"coinLogo\"><img src=\"images/logos/doge.png\"></div>"
 +"<div class=\"coinWealth\" id=\"DOGEwealth\">0.00</div>"
 +"<div class=\"coinAmount\" id=\"DOGEamount\">0.00</div>"
 +"<div class=\"thiscoinprice\">1 Dogecoin = "+rateDOGE+" "+fiatCurrency+"</div>"
@@ -21,17 +21,13 @@ DOGEBalancecrawler();
 function DOGEBalancecrawler() {
 setTimeout(function(){
 var $container = $(".keymanDOGEkeys");
-////console.log(DOGEkeys[i].pubkey);
 $container.append("<tr class=\"Tabl3TR DOGEsetENT"+DOGEkeys[dogei].pubkey+"\">"
 +"<td class=\"\">"+DOGEkeys[dogei].pubkey+"</td>"
 +"<td class=\"\">"+DOGEkeys[dogei].description+"</td>"
 +"<td class=\"balanceC0unter DOGEkeybalance"+DOGEkeys[dogei].pubkey+"\"></td>"
 +"<td class=\"deleteThis\" data-delcoin=\"DOGE\" data-delkey=\""+DOGEkeys[dogei].pubkey+"\">Delete</td>"
 +"</tr>");
-//RefreshSomeEventListener();	
-//var thisbalance = "";
 getpubkeyBalanceDOGE(DOGEkeys[dogei].pubkey);
-//$(window).trigger("resize");
 dogei++;        
 if (dogei < DOGEkeys.length) DOGEBalancecrawler()
 }, Math.floor(Math.random() * 1000) + 1000)
@@ -64,27 +60,23 @@ setTimeout(getDOGECoinWealth, 1000);
 
 function getDOGECoinWealth () {
 dogeCoinWealth = 0;	
-////console.log("getDOGECoinWealth");
-/* get doge wealth*/
 $('.keymanDOGEkeys > .Tabl3TR').children('.balanceC0unter').each(function () {
 var thisCoin = $(this).text();
-////console.log(thisCoin);
 if (thisCoin > 0.00001){dogeCoinWealth = parseFloat(dogeCoinWealth) + parseFloat($(this).text());}
 });
 dogeCoinWealthFIAT = (dogeCoinWealth*rateDOGE).toFixed(4);
+$('.DOGEcard').attr('data-balance', dogeCoinWealthFIAT);
 dogeCoinWealthFIAT = ('$' + parseFloat(dogeCoinWealthFIAT, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
 $('#DOGEwealth').html(dogeCoinWealthFIAT + " " + fiatCurrency);
 $('#DOGEamount').html(dogeCoinWealth);
-////console.log("###dogeCoinWealth BALANCE "+dogeCoinWealth+"###");
-/* get doge wealth*/
 RefreshDOGEListeners();
+sortByBalance();
 }
 
 
 function RefreshDOGEListeners() {
 $(".keymanDOGEkeys .Tabl3TR .deleteThis").off(); 
 $(".keymanDOGEkeys .Tabl3TR .deleteThis").on('click', function() {
-//console.log("###DELETE KEY###");
 var todeleteaddress = $(this).attr("data-delkey")
 var index2del = arrayObjectIndexOf(DOGEkeys, todeleteaddress, "pubkey" ); 
 

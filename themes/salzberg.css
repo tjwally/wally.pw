@@ -1,0 +1,114 @@
+ @import url('https://fonts.googleapis.com/css?family=Anton|Roboto');
+a, a:visited{color:darkblue;}
+a {text-decoration: none;}
+
+.top_bar_bg 	{ background-color:#4080FF; background-image: url("../images/textures/mooning.png"); border-bottom:4px solid black;}
+.top_bar_font 	{ font-family: 'Roboto', sans-serif;	font-size:2vw; text-shadow: horizontal-offset vertical-offset blur color; text-shadow: 2px 4px 3px rgba(0,0,0,0.3);}
+.top_bar_color 	{ color:#fff; font-weight:bold;}
+
+.content_bg		{  background-color: #4080FF; background-image: url("../images/textures/mooning.png");  }
+.content_font 	{ font-family: 'Roboto', sans-serif;	font-size:0.7vw;}
+.content_color 	{ color:#fff;}
+
+.sidebar_font 	{ font-family: 'Roboto', sans-serif;	font-size:2vw;}
+.sidebar_color 	{ color:#000; background-image: url("../images/textures/binding_dark.png");}
+.sidebar_bg		{ background-color:#B7C6F0;}
+
+
+.logo			{align-self: center;    flex-direction: column; display:flex; justify-content:center; text-align:center; padding-top:0vh; height:10vh; min-width:100%; border-left:0px solid black; background-color:#000; background-image: url("../images/textures/binding_dark.png");}	
+.logo span		{align-self: center;}
+.logo_color		{color:#fff; border-bottom:4px solid #fff;}
+.logo_font		{font-family: 'Anton', sans-serif;	font-size:2vw;  }
+.logo_font span {font-size:1vw;  }
+.MenuBarR		{flex:0;align-items: center text-align:left; width:100%; padding-top:15vh;}
+
+.topContentbar  { height:10vh; width:100%;	display: flex; justify-content: center;flex-direction: row; align-items: center; font-size:3vw;}
+.card {margin-left:1vw; margin-right:1vw; min-height: -webkit-min-content;width:9vw;max-width:15vw;text-align:center; margin-bottom:1.5vh; 
+margin-top:1.5vh; background-color:#; padding:2vw; border-radius:4vw;}
+.card img {max-width:100%; max-height:5vh; padding-bottom:0vh}
+.coinWealth {font-size:1.5vw;}
+.coinAmount	{font-size:1vw;}
+.coinLogo{ border-bottom:5px dashed #000; background-color:#fff;  border-radius:4vw;padding:1vw;max-height:5vh;min-height:5vh; display: flex;flex-direction: column; align-items: center; justify-content:center;}
+
+.P1BTN			{padding-top:1vh; padding-bottom:1vh; }
+.P1BTN {cursor:pointer; color:#fff; padding-left:2vw;}
+.P1BTN:hover {color:lightblue;text-shadow: 0px 0px 6px rgba(255,255,255,0.7); }
+.activeBTN {cursor:default;font-weight:normal;color:#ccc; text-shadow: 0px 0px 6px rgba(255,255,255,0.7);}
+.activeBTN:hover {  color:#ccc; }
+
+.keymanager{color:#000; font-weight:bold; font-size:1.0vw; }
+#addkeyForm {background-color:#fff;width:100%; margin:0 auto;}
+.keymanKeyHeader {text-align:center; font-size:1.5vw; background-color:#fff; width:100%; margin: 0 auto;}
+#keymanagerWallets {padding-bottom:2vh;}
+#keymanagerWallets table {width:100%; margin: 0 auto; border-collapse: collapse;}
+#keymanagerWallets table tr{ padding:0; margin:0; border-bottom:1px solid black;}
+#keymanagerWallets table .pubkey{width:35%;background-color:#FFF;}
+#keymanagerWallets table .coindesc{width:40%;background-color:#FFF;}
+#keymanagerWallets table .coinbalance{width:15%;background-color:#FFF; }
+#keymanagerWallets table .delcoin{width:10%;background-color:#FFF; }
+#keymanagerWallets table td{color:#000; padding:0; margin:0; background-color:#fff; padding-left:1vw; padding-right:1vw;}
+#keymanagerWallets table td:hover{background-color:lightblue;}
+#addkeyForm {text-align:center;}
+#coinpubkey {width:25%;}
+#addressdescription {width:15%;}
+.deleteThis{cursor:pointer;}
+
+button{   height: auto;   color:#fff;   background-color:#071207;   font-family: 'Roboto', sans-serif;   border:1px solid lightblue;   font-size:1vw;}
+input{   height: 1.5vw;   color:#fff;   background-color:#071207;   font-family: 'Roboto', sans-serif;   border:1px solid lightblue;   font-size:1vw;}
+select{   -webkit-appearance: menulist-button;   height: 1.5vw;   color:#fff;   background-color:#071207;   font-family: 'Roboto', sans-serif;   border:1px solid lightblue;      font-size:1vw;}
+
+.AnonCoins{display:none; text-align:center; }
+.AnonCoins table {width:80%; margin: 0 auto; border-collapse: collapse; font-size:1vw;}
+.AnonCoins table tr{ padding:0; margin:0;}
+.AnonCoins table td{ width:1%; text-align:center; background-color:#; color:#639DC9;}
+.keymanagerTablePC .tableDesc {font-weight:bold;background-color:#FFF; color:#000; }
+
+
+.wallysettings{display:none; text-align:center; font-size:1vw;}
+.fiatselect{margin-top:2vh;}
+.ApiserverStatus{margin:0 auto;  width:50vw;font-size:1.5vw; background-color:#;}
+.resetBTN{margin:0 auto; margin-top:3vh; display:block; width:50vw;display:block;}
+.reloadBTN{margin:0 auto; margin-top:5vh; display:block; width:50vw; display:block;}
+.btn{font-family: 'Roboto', sans-serif; }
+.fiatselect{background-color:#;}
+.themeselect{background-color:#;}
+.importExport{display:none; text-align:center;}
+#downloadJSONDIS{margin-top:5vh; width:80%; height:auto; background-color:fff; text-align:center; font-size:0.8vw; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif;}
+#WalletURL{margin-top:5vh; width:80%; height:auto; background-color:fff; text-align:center; font-size:0.8vw; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif; word-break: break-all;}
+#importJSONBTN{}
+#importJSON{width:80%; min-height:10vh; padding:0vw;  margin-top:2vh;}
+
+
+
+.tingle-btn{font-size:0.8vw; font-family: 'Roboto', sans-serif;}
+.tingle-modal{font-family: 'Roboto', sans-serif; color:black;font-size:0.8vw;}
+.tingle-modal-box{background-color:#fff; border-radius: 0px;}
+
+.offlineIndicator{color:red;}
+.onlineIndicator{color:green;}
+
+
+.btn {
+display: inline-block;
+padding: 9px 12px;
+padding-top: 7px;
+margin-bottom: 0;
+font-size: 0.8vw;
+line-height: 20px;
+color: #5e5e5e;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+background-color: #d1dade;
+-webkit-border-radius: 0px;
+-webkit-border-radius: 0px;
+-webkit-border-radius: 0px;
+background-image: none !important;
+border: none;
+text-shadow: none;
+box-shadow: none;
+transition: all 0.12s linear 0s !important;
+}
+.btn-cons {margin-right: 5px;min-width: 120px;margin-bottom: 8px;}
+.btn-danger {color: #fff;background-color: #d9534f;border-color: #d43f3a;}
+.btn-b1 {color: #fff;background: rgb(66, 184, 221);border-color: #d43f3a;}

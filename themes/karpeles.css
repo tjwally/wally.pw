@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Lato');
+a, a:visited{color:darkblue;}
+a {text-decoration: none;}
+
+.top_bar_bg 	{ background-color:#82523C;}
+.top_bar_font 	{ font-family: 'Lato', sans-serif;	font-size:2vw;}
+.top_bar_color 	{ color:#DCC1B5;}
+
+.content_bg		{  background-image: url("../images/textures/karpeles.jpg"); }
+.content_font 	{ font-family: 'Lato', sans-serif;	font-size:0.7vw;}
+.content_color 	{ color:#81413C;}
+
+.sidebar_font 	{ font-family: 'Lato', sans-serif;	font-size:2vw;}
+.sidebar_color 	{ color:#665248;}
+.sidebar_bg		{ background-color:#DCC1B5;}
+
+.logo			{align-self: center; text-align:center; padding-top:0vh; height:10vh; min-width:100%; border-left:0px solid black; background-color:#D2A38E; line-height:5vw;}	
+.logo span		{align-self: right; flex:auto; font-size:1vw;}
+.logo_color		{color:#4D200C;}
+.logo_font		{font-family: 'Raleway', sans-serif;	font-size:2.5vw;}
+.logo_font span {font-size:1vw;}
+.MenuBarR		{flex:0;align-items: center text-align:left; width:100%; padding-top:15vh;}
+
+.topContentbar  { height:10vh; width:100%;	display: flex; justify-content: center;flex-direction: row; align-items: center; font-size:3vw;}
+.card {margin-left:1vw; margin-right:1vw; min-height: -webkit-min-content;width:10vw;max-width:15vw;text-align:center; margin-bottom:1.5vh; 
+margin-top:1.5vh; background-color:#; padding:2vw; background-color:#FFEAE8; border-radius:4vw;}
+.card img {max-width:100%; max-height:5vh; padding-bottom:0.2vh}
+.coinWealth {font-size:1.5vw;}
+.coinAmount	{font-size:1vw;}
+.coinLogo{ border-bottom:3px dotted #000; padding-bottom:2px;max-height:5vh;min-height:5vh; display: flex;flex-direction: column; align-items: center; justify-content:flex-end;}
+
+.P1BTN			{padding-top:1vh; padding-bottom:1vh;}
+.P1BTN {cursor:pointer; color:#; padding-left:2vw;}
+.P1BTN:hover {color:#fff; background-color:#B1387C;}
+.activeBTN {cursor:default;font-weight:normal;color:#FADAEC; }
+.activeBTN:hover {  color:#FADAEC; background-color:#EFACD2;}
+
+.keymanager{color:#fff; font-weight:bold; font-size:1.0vw; }
+#addkeyForm {background-color:#EFACD2;width:80%; margin:0 auto;}
+.keymanKeyHeader {text-align:left; font-size:1.5vw; background-color:#EFACD2; width:80%; margin: 0 auto;}
+#keymanagerWallets {padding-bottom:2vh;}
+#keymanagerWallets table {width:80%; margin: 0 auto; border-collapse: collapse;}
+#keymanagerWallets table tr{ padding:0; margin:0;}
+#keymanagerWallets table .pubkey{width:40%;background-color:#FFF; font-weight:bold;}
+#keymanagerWallets table .coindesc{width:30%;background-color:#FFF; font-weight:bold;}
+#keymanagerWallets table .coinbalance{width:20%;background-color:#FFF; font-weight:bold;}
+#keymanagerWallets table .delcoin{width:10%;background-color:#FFF; font-weight:bold;}
+#keymanagerWallets table td{color:#000; padding:0; margin:0; background-color:#DCC1B5;}
+#addkeyForm {text-align:center;}
+#coinpubkey {width:25%;}
+#addressdescription {width:15%;}
+.deleteThis{cursor:pointer;}
+
+button{   height: auto;   color:#fff;   background-color:#071207;   font-family: 'Lato', sans-serif;   border:1px solid green;   font-size:1vw;}
+input{   height: 1.5vw;   color:#fff;   background-color:#071207;   font-family: 'Lato', sans-serif;   border:1px solid green;   font-size:1vw;}
+select{   -webkit-appearance: menulist-button;   height: 1.5vw;   color:#fff;   background-color:#071207;   font-family: 'Lato', sans-serif;   border:1px solid green;      font-size:1vw;}
+
+.AnonCoins{display:none; text-align:center; }
+.AnonCoins table {width:80%; margin: 0 auto; border-collapse: collapse; font-size:1vw;}
+.AnonCoins table tr{ padding:0; margin:0;}
+.AnonCoins table td{ width:1%; text-align:center; background-color:#EFACD2; color:#FFEAE8;}
+.keymanagerTablePC .tableDesc {font-weight:bold;background-color:#FFF; color:#000; }
+
+
+.wallysettings{display:none; text-align:center;}
+.fiatselect{margin-top:2vh;}
+.ApiserverStatus{margin:0 auto;  width:50vw;font-size:1.5vw; background-color:#EFACD2;}
+.resetBTN{margin:0 auto; margin-top:3vh; display:block; width:50vw;display:block;}
+.reloadBTN{margin:0 auto; margin-top:5vh; display:block; width:50vw; display:block;}
+.btn{font-family: 'Lato', sans-serif; }
+.fiatselect{background-color:#EFACD2;}
+.themeselect{background-color:#EFACD2;}
+.importExport{display:none; text-align:center;}
+#downloadJSONDIS{margin-top:5vh; width:80%; height:auto; background-color:fff; text-align:center; font-size:0.8vw; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif;}
+#WalletURL{margin-top:5vh; width:80%; height:auto; background-color:fff; text-align:center; font-size:0.8vw; text-align:left; color:#000; font-family: Verdana,Geneva,sans-serif; word-break: break-all;}
+#importJSONBTN{}
+#importJSON{width:80%; min-height:10vh; padding:0vw;  margin-top:2vh;}
+
+
+
+.tingle-btn{font-size:0.8vw; font-family: 'Lato', sans-serif;}
+.tingle-modal{font-family: 'Lato', sans-serif; color:brown;font-size:0.8vw;}
+.tingle-modal-box{background-color:#EFACD2; border-radius: 0px;}
+
+.offlineIndicator{color:red;}
+.onlineIndicator{color:white;}
+
+
+.btn {
+display: inline-block;
+padding: 9px 12px;
+padding-top: 7px;
+margin-bottom: 0;
+font-size: 0.8vw;
+line-height: 20px;
+color: #5e5e5e;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+background-color: #d1dade;
+-webkit-border-radius: 0px;
+-webkit-border-radius: 0px;
+-webkit-border-radius: 0px;
+background-image: none !important;
+border: none;
+text-shadow: none;
+box-shadow: none;
+transition: all 0.12s linear 0s !important;
+}
+.btn-cons {margin-right: 5px;min-width: 120px;margin-bottom: 8px;}
+.btn-danger {color: #fff;background-color: #d9534f;border-color: #d43f3a;}
+.btn-b1 {color: #fff;background: rgb(66, 184, 221);border-color: #d43f3a;}

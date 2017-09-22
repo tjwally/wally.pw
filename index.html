@@ -14,19 +14,20 @@
 <script src="js/tokens.eth.js"></script>
 <script src="js/tokens.counterparty.js"></script>
 <script src="js/anon.coins.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
-<link rel="stylesheet" href="css/flexboxgrid.min.css">
 <link rel="stylesheet" href="css/wally.css">
 <script>
+$( document ).ready(function() {
 function getWallyTheme () {
 if (localStorage.getItem("wallyTheme") === null) {
 console.log("###NO wally theme DATA###");
-wallyTheme = "8bit";
+wallyTheme = "salzberg";
 loadjscssfile("themes/"+wallyTheme+".css", "css")
 } else {
 wallyTheme = localStorage.getItem("wallyTheme");
 loadjscssfile("themes/"+wallyTheme+".css", "css")
+document.getElementById('themeselect').value=wallyTheme;
+
+
 }
 
 }
@@ -43,39 +44,41 @@ function loadjscssfile(filename, filetype){
         document.getElementsByTagName("head")[0].appendChild(fileref)
 }
 getWallyTheme();
+
+
+
+});
+
+</script>
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106845585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106845585-1');
 </script>
 
 </head>
 <body>
-
-<div class="mainScreenwrapper row row--no-gutter">
-<div class="leftP1 col-xs-10 col--no-gutter mainScreen theme_backgroundcolor1 theme_color1 theme_font1"><div class="wealthmeter theme_font2 theme_color2 theme_backgroundcolor2">Richness: <span class="wealthCounter">0</span></div>
-<div id="CoinOverViewWrapper"> 
+<div class="grid">
+<!-- CONTENT START -->
+<div class="content content_font content_color content_bg">
+<!-- mainpage -->
+<div class="CoinOverViewWrapper mainContentBlock"> 
+<div class="topContentbar top_bar_font top_bar_color top_bar_bg">Richness: <span class="wealthCounter">0</span></div>
 <div id="CoinOverView" class=""></div>
-
-<div id="APIServerCheck">
-<div class="WalletsTracked"></div><br>
-API Server Status:
-<div id="cryptocompare" class="red">min-api.cryptocompare.com</div>
-<div id="ethplorer" class="red">api.ethplorer.io</div>
-<div id="bccblockdozer" class="red">bcc.blockdozer.com</div>
-<div id="btcblockdozer" class="red">btc.blockdozer.com</div>
-<div id="chainso" class="red">chain.so</div>
-<div id="counterpartychainio" class="red">counterpartychain.io</div>
 </div>
-</div>
-</div>
-
-
-
+<!-- mainpage -->
 
 <!-- Key Manager  -->
-<div class="keymanager leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
-<div class="KeymanagerTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Keymanager</span></div></div>
+<div class="keymanager mainContentBlock">
+<div class="topContentbar top_bar_font top_bar_color top_bar_bg"><div class=""><span>Keymanager</span></div></div>
 <div id="addkeyForm">
 <div class="T2head">Add new Public Key</div>
 <label for="coinpubkey">Public Key</label>
-<input id="coinpubkey" type="text" name="coinpubkey" value="">
+<input id="coinpubkey" type="text" name="coinpubkey" value="" required>
 <label for="addressdescription">Description</label>
 <input id="addressdescription" type="text" name="addressdescription" value="">
 <label for="cointype">Currency</label>
@@ -87,29 +90,29 @@ API Server Status:
   <option value="doge">Dogecoin</option>
   </select> 
 <button id="savepubkey">add</button>
-<div style="font-size:0.7vw;">(supported Ethereum Tokens are automatically scanned)</div>
+<div style="font-size:0.7vw;">(supported Ethereum & Counterparty Tokens are automatically scanned)</div>
 </div>
-<div id="keymanagerWalletswrapper">
 <div id="keymanagerWallets"></div>
-</div>
 </div>
 <!-- Key Manager -->
 
 <!-- AnonCoins -->
-<div class="AnonCoins leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
-<div class="AnonCoinsTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Unsupervised Cryptos</span></div></div>
+<div class="AnonCoins mainContentBlock">
+<div class="topContentbar top_bar_font top_bar_color top_bar_bg"><div class=""><span>Unsupervised Cryptos</span></div></div>
 <p>These Coins have privacy features that don't allow balance tracking or no public API service.</p>
 <div id="anonC0ins">
-<table class="keymanagerTablePC">
-<tr class="tableDesc"><td>Name</td><td>Symbol</td><td>Balance</td></tr>
+<table class="keymanagerTablePC"><thead>
+<tr><td class="tableDesc">Name</td><td class="tableDesc">Symbol</td><td class="tableDesc">Balance</td></tr>
+</thead>
 <tbody class="keymanan0nkeys"></table>
 </div>
 </div>
 <!-- AnonCoins -->
 
+
 <!-- Settings -->
-<div class="wallysettings leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
-<div class="wallysettingsTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Settings</span></div>
+<div class="wallysettings mainContentBlock">
+<div class="topContentbar top_bar_font top_bar_color top_bar_bg"><div class=""><span>Settings</span></div>
 </div>
 <div class="fiatselect">
 <label for="fiatcurrencySEL">Fiat Currency</label>
@@ -125,47 +128,67 @@ API Server Status:
  <select name="themeselect" class="theme_Select" id="themeselect">
   <option value="8bit">8bit</option>
   <option value="classic">classic</option>
-  </select> 
+   <option value="karpeles">karpeles</option>
+   <option value="salzberg">salzberg</option>
+   </select> 
 </div>
 
 <div class="reloadBTN btn btn-b1 btn-cons">Reload Wally</div>
-<div class="theme_infoBox">(reload to apply FIAT and Theme changes)</div>
+<div class="theme_infoBox">(reload to apply new theme)</div>
+
+
+<div id="APIServerCheck">
+<div class="WalletsTracked"></div>
+<div class="ApiserverStatus">API Server Status:</div>
+<div id="cryptocompare" class="offlineIndicator">min-api.cryptocompare.com</div>
+<div id="ethplorer" class="offlineIndicator">api.ethplorer.io</div>
+<div id="bccblockdozer" class="offlineIndicator">bcc.blockdozer.com</div>
+<div id="btcblockdozer" class="offlineIndicator">btc.blockdozer.com</div>
+<div id="chainso" class="offlineIndicator">chain.so</div>
+<div id="counterpartychainio" class="offlineIndicator">counterpartychain.io</div>
+</div>
 
 <div class="resetBTN btn btn-danger btn-cons">Reset All Wally Data</div>
 </div>
 <!-- Settings -->
 
+
 <!-- Import/Export -->
-<div class="importExport leftP1 col-xs-10 col--no-gutter theme_backgroundcolor1 theme_color1 theme_font1">
-<div class="importExportTop top1 theme_font2 theme_color2 theme_backgroundcolor2"><div class=""><span>Import/Export</span></div></div>
-<div class="importwrapper1">
-<div class="importwrapper">
-<textarea id="importJSON" placeholder="paste your JSON backup here"></textarea>
-<div class="btn btn-b1 btn-cons" id="importJSONBTN">Import JSON Backup</div>
-<code id="downloadJSONDIS"></code>
-<div class="btn btn-b1  btn-cons" id="downloadJSON">Generate JSON Backup</div>
-<code id="WalletURL"></code>
-<div class="btn btn-b1  btn-cons" id="generateURL">Generate Wallet URL</div>
-</div>
-</div>
+<div class="importExport mainContentBlock">
+<div class="topContentbar top_bar_font top_bar_color top_bar_bg"><div class=""><span>Import/Export</span></div></div>
+
+<textarea id="importJSON" placeholder="paste your JSON backup here"></textarea><br>
+<div class="btn btn-b1 btn-cons" id="importJSONBTN">Import JSON Backup</div><br>
+<textarea id="downloadJSONDIS"></textarea><br>
+<div class="btn btn-b1  btn-cons" id="downloadJSON">Generate JSON Backup</div><br>
+<textarea id="WalletURL"></textarea><br>
+<div class="btn btn-b1  btn-cons" id="generateURL">Generate Wallet URL</div><br>
 </div>
 <!-- Import/Export -->
+</div>
+<!-- CONTENT END -->
 
+<div class="sidebar sidebar_font sidebar_color sidebar_bg">
 <!-- Right Menu -->
-<div class="rightP1 col-xs-2 col--no-gutter theme_backgroundcolor3 theme_color3 theme_font3"><div class="top1 theme_font4 theme_logo1"><span>Wally</span></div>
-<div class="top2 theme_logo2 theme_font4"><span>The HODL Wallet</span></div>
-<div class="settings theme_font3">
-<div class="P1BTN homeBTN theme_font3">Home</div>
-<div class="P1BTN keymanagerBTN theme_font3">PubKey Manager</div>
-<div class="P1BTN anoncoinsBTN theme_font3">Unsupervised<br>Cryptos</div>
-<div class="P1BTN settingsBTN theme_font3">Settings</div>
-<div class="P1BTN impexpBTN theme_font3">Import/Export</div>
-<div class="P1BTN abountBTN theme_font3">About</div>
+<div class="logo logo_color logo_font">Wally<span>The HODL Wallet</span></div>
+<div class="MenuBarR">
+<div class="P1BTN homeBTN">Home</div>
+<div class="P1BTN keymanagerBTN">PubKey Manager</div>
+<div class="P1BTN anoncoinsBTN">Unsupervised<br>Cryptos</div>
+<div class="P1BTN settingsBTN">Settings</div>
+<div class="P1BTN impexpBTN">Import/Export</div>
+<div class="P1BTN abountBTN">About</div>
 </div>
 
-</div>  
 <!-- Right Menu -->
 </div>
+
+
+</div>
+
+
+
+
 <div id="about">
 <div class="theme_font4">
 <p>Copyright (c) 2017 tj@wally.pw<br>
@@ -180,7 +203,8 @@ Wally - The HODL Wallet is distributed under the <a href="LICENSE">MIT software 
 Wally also uses <a target="_blank" href="jquery.org">jQuery</a> and <a target="_blank" href="http://robinparisi.github.io/tingle/">tingle.js</a> 
 </p>
 <p>Donations<br>
-BTC: 1811FWuhDXnvre62BVwr8UVZaAkB2znTN9
+BTC: 1811FWuhDXnvre62BVwr8UVZaAkB2znTN9<br>
+BCH: 1PcxdHvZxcN2A56wZvUth5nKkaMiCXkEN7
 </p>
 </div>
 </div>

@@ -3,14 +3,52 @@ richness= 0;
 scr33n=0;
 fiatCurrency = "";
 
+
+function FLinit() {
+walletcount = 0;
+APIserverCheck();
+getfiatCurrency(function () {
+$("#keymanagerWallets").empty();
+$("#CoinOverView").empty();
+$(".keymanan0nkeys").empty();
+richness = 0;
+priceCheck(function () {
+getAnonCoins(function () {	
+loadiniData(function () { 
+if (walletcount > 0) {
+$('.WalletsTracked').html("Public Keys Tracked: "+walletcount);	
+loadwallets(function () { 
+getWallets(function () { 
+
+
+}); 
+}); 
+}
+});
+}); 
+}); 
+}); 
+}
+
+//2bf
+function sortByBalance() {
+var $wrapper = $('#CoinOverView');
+$wrapper.find('.card').sort(function(a, b) {
+    return +b.getAttribute('data-balance') - +a.getAttribute('data-balance');
+//	console.log();
+})
+.appendTo($wrapper);
+}
+//2bf
+
 function APIserverCheck() {
-$.ajax({url: "https://api.ethplorer.io",
+$.ajax({url: "https://api.ethplorer.io/getAddressInfo/0xbC0C4ae008BABA243113876aC509368dc7b40417?apiKey=freekey",
         type: "HEAD",
         timeout:30000,
         statusCode: {
             200: function (response) {
-				$( "#ethplorer" ).addClass( "green" );
-				$( "#ethplorer" ).removeClass( "red" );				
+				$( "#ethplorer" ).addClass( "onlineIndicator" );
+				$( "#ethplorer" ).removeClass( "offlineIndicator" );				
             },
             400: function (response) {
                 console.log("ethplorer down :(");
@@ -25,8 +63,8 @@ $.ajax({url: "https://api.ethplorer.io",
         timeout:30000,
         statusCode: {
             200: function (response) {
-				$( "#cryptocompare" ).addClass( "green" );
-				$( "#cryptocompare" ).removeClass( "red" );				
+				$( "#cryptocompare" ).addClass( "onlineIndicator" );
+				$( "#cryptocompare" ).removeClass( "offlineIndicator" );				
             },
             400: function (response) {
                 console.log("cryptocompare down :(");
@@ -41,12 +79,12 @@ $.ajax({url: "http://bcc.blockdozer.com/insight-api/",
         timeout:30000,
         statusCode: {
             200: function (response) {
-				$( "#bccblockdozer" ).addClass( "green" );
-				$( "#bccblockdozer" ).removeClass( "red" );				
+				$( "#bccblockdozer" ).addClass( "onlineIndicator" );
+				$( "#bccblockdozer" ).removeClass( "offlineIndicator" );				
             },
             404: function (response) {
-				$( "#bccblockdozer" ).addClass( "green" );
-				$( "#bccblockdozer" ).removeClass( "red" );	
+				$( "#bccblockdozer" ).addClass( "onlineIndicator" );
+				$( "#bccblockdozer" ).removeClass( "offlineIndicator" );	
             },
             400: function (response) {
                 console.log("bccblockdozer down :(");
@@ -61,12 +99,12 @@ $.ajax({url: "http://bcc.blockdozer.com/insight-api/",
         timeout:30000,
         statusCode: {
             200: function (response) {
-				$( "#btcblockdozer" ).addClass( "green" );
-				$( "#btcblockdozer" ).removeClass( "red" );				
+				$( "#btcblockdozer" ).addClass( "onlineIndicator" );
+				$( "#btcblockdozer" ).removeClass( "offlineIndicator" );				
             },
             404: function (response) {
-				$( "#btcblockdozer" ).addClass( "green" );
-				$( "#btcblockdozer" ).removeClass( "red" );	
+				$( "#btcblockdozer" ).addClass( "onlineIndicator" );
+				$( "#btcblockdozer" ).removeClass( "offlineIndicator" );	
             },
             400: function (response) {
                 console.log("btcblockdozer down :(");
@@ -81,12 +119,12 @@ $.ajax({url: "http://bcc.blockdozer.com/insight-api/",
         timeout:30000,
         statusCode: {
             200: function (response) {
-				$( "#chainso" ).addClass( "green" );
-				$( "#chainso" ).removeClass( "red" );				
+				$( "#chainso" ).addClass( "onlineIndicator" );
+				$( "#chainso" ).removeClass( "offlineIndicator" );				
             },
             404: function (response) {
-				$( "#chainso" ).addClass( "green" );
-				$( "#chainso" ).removeClass( "red" );	
+				$( "#chainso" ).addClass( "onlineIndicator" );
+				$( "#chainso" ).removeClass( "offlineIndicator" );	
             },
             400: function (response) {
                 console.log("chainso down :(");
@@ -101,12 +139,12 @@ $.ajax({url: "http://bcc.blockdozer.com/insight-api/",
         timeout:30000,
         statusCode: {
             200: function (response) {
-				$( "#counterpartychainio" ).addClass( "green" );
-				$( "#counterpartychainio" ).removeClass( "red" );				
+				$( "#counterpartychainio" ).addClass( "onlineIndicator" );
+				$( "#counterpartychainio" ).removeClass( "offlineIndicator" );				
             },
             404: function (response) {
-				$( "#counterpartychainio" ).addClass( "green" );
-				$( "#counterpartychainio" ).removeClass( "red" );	
+				$( "#counterpartychainio" ).addClass( "onlineIndicator" );
+				$( "#counterpartychainio" ).removeClass( "offlineIndicator" );	
             },
             400: function (response) {
                 console.log("counterpartychainio down :(");
@@ -177,6 +215,7 @@ console.log("###NO wally settings DATA###");
 fiatCurrency = "USD";
 } else {
 fiatCurrency = localStorage.getItem("fiatCurrency");
+document.getElementById('fiatcurrencySEL').value=fiatCurrency;
 }
 callback();
 }
@@ -185,28 +224,7 @@ callback();
 // BCHkeys
 // ETHkeys
 
-function FLinit() {
-APIserverCheck();
-getfiatCurrency(function () {
-$("#keymanagerWallets").empty();
-$("#CoinOverView").empty();
-$(".keymanan0nkeys").empty();
-richness = 0;
-priceCheck(function () {
-getAnonCoins(function () {	
-loadiniData(function () { 
-if (walletcount > 0) {
-$('.WalletsTracked').html("Public Keys Tracked: "+walletcount);	
-loadwallets(function () { 
-getWallets(function () { 
-}); 
-}); 
-}
-});
-}); 
-}); 
-}); 
-}
+
 
 
 /* pricecheck v2 */
@@ -216,7 +234,7 @@ function priceCheck (callback) {
 console.log("###PRICE CHECK###");	
  jQuery.ajax({
     dataType: "json",
-    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,STORJ,XMR,ZEC,LTC,DOGE,ARDR,NXT,LTBC,FLDC,PEPECASH&tsyms="+fiatCurrency,
+    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,STORJ,XMR,ZEC,LTC,DOGE,ARDR,NXT,LTBC,FLDC,PEPECASH,NXS,EOS,ICN&tsyms="+fiatCurrency,
     success: function( data ) { 
 	rateBTC = data['BTC'][fiatCurrency];
 	rateBCH = data['BCH'][fiatCurrency];
@@ -231,6 +249,9 @@ console.log("###PRICE CHECK###");
 	rateLTBCOIN = data['LTBC'][fiatCurrency];
 	rateFLDC = data['FLDC'][fiatCurrency];
 	ratePEPECASH = data['PEPECASH'][fiatCurrency];	
+	rateEOS = data['EOS'][fiatCurrency];
+	rateNXS = data['NXS'][fiatCurrency];
+	rateICN = data['ICN'][fiatCurrency];
 	callback();
 		}
 		});
@@ -280,11 +301,8 @@ walletcount = walletcount + Object.keys(ETHkeys).length;
 console.log("###YES ETHkeys DATA###");
 }
 
-if (walletcount === 0) {
-$('.WalletsTracked').html("Public Keys Tracked: "+walletcount);	
-console.log("walletcount === 0");
-addKeyWiz();
-}
+
+
 callback();
 }
 function loadwallets(callback) {
@@ -375,15 +393,15 @@ function showmainScreen() {
 console.log("###showKeyManagement###");
 $('.P1BTN').removeClass('activeBTN');
 $('.homeBTN').addClass('activeBTN');
-$('.leftP1').hide(0,"linear");
-$('.mainScreen').show(0,"linear");
+$('.mainContentBlock').hide(0,"linear");
+$('.CoinOverViewWrapper').show(0,"linear");
 }
 
 function showAnonCoins() {
 console.log("###showAnonCoins###");
 $('.P1BTN').removeClass('activeBTN');
 $('.anoncoinsBTN').addClass('activeBTN');
-$('.leftP1').hide(0,"linear");
+$('.mainContentBlock').hide(0,"linear");
 $('.AnonCoins').show(0,"linear");
 }
 
@@ -394,7 +412,7 @@ function showKeyManagement() {
 console.log("###showKeyManagement###");
 $('.P1BTN').removeClass('activeBTN');
 $('.keymanagerBTN').addClass('activeBTN');
-$('.leftP1').hide(0,"linear");
+$('.mainContentBlock').hide(0,"linear");
 $('.keymanager').show(0,"linear");
 }
 
@@ -402,7 +420,7 @@ function showSettings() {
 console.log("###showKeyManagement###");
 $('.P1BTN').removeClass('activeBTN');
 $('.settingsBTN').addClass('activeBTN');
-$('.leftP1').hide(0,"linear");
+$('.mainContentBlock').hide(0,"linear");
 $('.wallysettings').show(0,"linear");
 }
 
@@ -410,7 +428,7 @@ function showimportExport() {
 console.log("###showKeyManagement###");
 $('.P1BTN').removeClass('activeBTN');
 $('.impexpBTN').addClass('activeBTN');
-$('.leftP1').hide(0,"linear");
+$('.mainContentBlock').hide(0,"linear");
 $('.importExport').show(0,"linear");
 }
 
@@ -458,11 +476,14 @@ $('.reloadBTN').on('click', function() {
 
 //settings
 $( document ).ready(function() {
+
+
 $( "#fiatcurrencySEL" ).change(function() {
 console.log("###fiatcurrencySEL###");
 var fiatcurrencySEL = $('select[name=fiatcurrencySEL]').val();
 var fiatCurrency = fiatcurrencySEL;
 localStorage.setItem('fiatCurrency', fiatcurrencySEL)
+FLinit();
 });
 
 $( "#themeselect" ).change(function() {
@@ -552,6 +573,8 @@ var addressdescription = $('input[name=addressdescription]').val();
 
 console.log(coinpubkey);
 console.log(addressdescription);
+FLinit();
+
 if (cointype == "btc"){
 	console.log("BTC");
 		BTCkeys.push({pubkey : coinpubkey,     description : addressdescription});
@@ -596,3 +619,18 @@ function arrayObjectIndexOf(myArray, searchTerm, property) {
     }
     return -1;
 }
+
+console.log("██╗    ██╗ █████╗ ██╗     ██╗  ██╗   ██╗                                                                             ");
+console.log("██║    ██║██╔══██╗██║     ██║  ╚██╗ ██╔╝                                                                             ");
+console.log("██║ █╗ ██║███████║██║     ██║   ╚████╔╝                                                                              ");
+console.log("██║███╗██║██╔══██║██║     ██║    ╚██╔╝                                                                               ");
+console.log("╚███╔███╔╝██║  ██║███████╗███████╗██║                                                                                ");
+console.log(" ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝                                                                                ");
+console.log("                                                                                                                     ");
+console.log("████████╗██╗  ██╗███████╗    ██╗  ██╗ ██████╗ ██████╗ ██╗         ██╗    ██╗ █████╗ ██╗     ██╗     ███████╗████████╗");
+console.log("╚══██╔══╝██║  ██║██╔════╝    ██║  ██║██╔═══██╗██╔══██╗██║         ██║    ██║██╔══██╗██║     ██║     ██╔════╝╚══██╔══╝");
+console.log("   ██║   ███████║█████╗      ███████║██║   ██║██║  ██║██║         ██║ █╗ ██║███████║██║     ██║     █████╗     ██║   ");
+console.log("   ██║   ██╔══██║██╔══╝      ██╔══██║██║   ██║██║  ██║██║         ██║███╗██║██╔══██║██║     ██║     ██╔══╝     ██║   ");
+console.log("   ██║   ██║  ██║███████╗    ██║  ██║╚██████╔╝██████╔╝███████╗    ╚███╔███╔╝██║  ██║███████╗███████╗███████╗   ██║   ");
+console.log("   ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝     ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝   ");
+console.log("                                                                                                                     ");
