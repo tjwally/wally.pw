@@ -342,7 +342,7 @@ var modal = new tingle.modal({
 //    	return false; 
     }
 });
-modal.setContent('<h1>No data found!</h1><p>Open the PubKey Manager or the Unsupervised Cryptos to get started.<br> You can also restore a JSON backup on the settings page</p>');
+modal.setContent('<h1>No data found!</h1><p>Open the PubKey Manager or the Unsupervised Cryptos to get started.<br> You can also restore a JSON backup on the Import/Export page</p>');
 modal.addFooterBtn('Key Manager', 'tingle-btn tingle-btn--primary', function() {
     modal.close();
 	console.log('KeyManager');
