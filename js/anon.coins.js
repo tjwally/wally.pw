@@ -63,15 +63,19 @@ $('.ancoinBalUpdater').each(function () {
 var coin = $(this).attr("data-coin")
 var cname = $(this).attr("data-cname")
 var abalance = $(this).val();
+console.log(abalance);
 var thisrate = "rate"+coin;
 if (abalance > 0){
 thisCoinWealthFIAT = abalance;	
 thisCoinWealthFIAT = parseFloat(thisCoinWealthFIAT);	
 thisCoinWealthFIAT = (abalance*eval(thisrate)).toFixed(4);	
 thisCoinWealthFIATCard = thisCoinWealthFIAT;
+console.log(thisCoinWealthFIAT);
 richness = parseFloat(richness) + parseFloat(thisCoinWealthFIAT);
+console.log(richness);
 richnescalc = ('$' + parseFloat(richness, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
-$('#richness').html(richnescalc + " " + fiatCurrency);	
+console.log(richnescalc);
+$('.wealthCounter').html(richnescalc + " " + fiatCurrency);	
 
 
 thisCoinWealthFIAT = ('$' + parseFloat(thisCoinWealthFIAT, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
