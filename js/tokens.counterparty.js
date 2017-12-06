@@ -57,5 +57,5 @@ var thisCPrate = "rate"+cptoken;
 thisCPbalance = (cptokenbalance*eval(thisCPrate)).toFixed(4);
 richness = parseFloat(richness) + parseFloat(thisCPbalance);
 richnescalc = ('$' + parseFloat(richness, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
-$('#richness').html(richnescalc + " " + fiatCurrency);	
+$('.wealthCounter').html(richnescalc + " " + fiatCurrency);	
 }

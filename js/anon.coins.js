@@ -102,6 +102,7 @@ var index2del = arrayObjectIndexOf(anoncoins, thiscoin, "coin" );
 anoncoins.splice(index2del, 1);
 anoncoins.push({coin : thiscoin, name : name, balance : balance});
 localStorage.setItem("anoncoins", JSON.stringify(anoncoins));
+FLinit();
 });
 setTimeout(RefreshAnonPrices, 1000);
 }

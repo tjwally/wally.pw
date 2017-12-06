@@ -38,22 +38,22 @@ if (i < BTCkeys.length) Balancecrawler()
 
 function getpubkeyBalanceBTC (thisBTCaddress, callback) {
 	
-jQuery.getJSON('https://counterpartychain.io/api/balances/'+thisBTCaddress,
+jQuery.getJSON('https://xchain.io/api/balances/'+thisBTCaddress,
 function(counterpartyCheck) {	
 for ( var member in counterpartyCheck.data) {
         if (counterpartyCheck.data[member].asset == "LTBCOIN") {	
 		cptoken = counterpartyCheck.data[member].asset;
-		cptokenbalance = counterpartyCheck.data[member].amount;
+		cptokenbalance = counterpartyCheck.data[member].quantity;
 		loadwalletCounterParty(cptoken,cptokenbalance,thisBTCaddress);
 		}
 		if (counterpartyCheck.data[member].asset == "FLDC") {	
 		cptoken = counterpartyCheck.data[member].asset;
-		cptokenbalance = counterpartyCheck.data[member].amount;
+		cptokenbalance = counterpartyCheck.data[member].quantity;
 		loadwalletCounterParty(cptoken,cptokenbalance,thisBTCaddress);
 		}
 		if (counterpartyCheck.data[member].asset == "PEPECASH") {	
 		cptoken = counterpartyCheck.data[member].asset;
-		cptokenbalance = counterpartyCheck.data[member].amount;
+		cptokenbalance = counterpartyCheck.data[member].quantity;
 		loadwalletCounterParty(cptoken,cptokenbalance,thisBTCaddress);
 		}		
 		
