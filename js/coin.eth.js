@@ -41,18 +41,20 @@ if (ETHi < ETHkeys.length) Balancecrawler()
 
 function getpubkeyBalanceETH (thisETHaddress, callback) {
 var addresscheck = "0";
-jQuery.getJSON('https://api.ethplorer.io/getAddressInfo/'+thisETHaddress+'?apiKey=freekey',
-function(address) {
-		
+
+$.ajax({
+    url : 'https://api.ethplorer.io/getAddressInfo/'+thisETHaddress+'?apiKey=freekey',
+	dataType: 'json',
+    tryCount : 0,
+    retryLimit : 3,
+    success : function(address) {
 thisbalance = address['ETH']['balance'];
-	
 thisbalanceETHSettings = thisbalance;
 thisbalance = (thisbalance*rateETH).toFixed(4);
 richness = parseFloat(richness) + parseFloat(thisbalance);
 thisbalance = ('$' + parseFloat(thisbalance, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
 addresscheck = thisbalance;
 balanceUpdaterETH(thisETHaddress, thisbalance, richness, thisbalanceETHSettings);
-
 for ( var member in address.tokens) {
         if (address.tokens[member].tokenInfo.symbol == "STORJ") {	
 		ethTokenaddress = address.tokens[member].tokenInfo.address;
@@ -80,9 +82,29 @@ for ( var member in address.tokens) {
 		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
 		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
 }
-
-
+    },
+    error : function(xhr, textStatus, errorThrown ) {
+        if (textStatus == 'timeout') {
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+                //try again
+                $.ajax(this);
+                return;
+            }            
+            return;
+        }
+        if (xhr.status == 500) {
+            //handle error
+        } else {
+            //handle error
+        }
+    }
 });
+
+
+
+
+
 }
 
 function balanceUpdaterETH (thisETHaddress) {

@@ -38,8 +38,13 @@ if (i < BTCkeys.length) Balancecrawler()
 
 function getpubkeyBalanceBTC (thisBTCaddress, callback) {
 	
-jQuery.getJSON('https://xchain.io/api/balances/'+thisBTCaddress,
-function(counterpartyCheck) {	
+	
+$.ajax({
+    url : 'https://xchain.io/api/balances/'+thisBTCaddress,
+	dataType: 'json',
+    tryCount : 0,
+    retryLimit : 3,
+    success : function(counterpartyCheck) {
 for ( var member in counterpartyCheck.data) {
         if (counterpartyCheck.data[member].asset == "LTBCOIN") {	
 		cptoken = counterpartyCheck.data[member].asset;
@@ -60,11 +65,33 @@ for ( var member in counterpartyCheck.data) {
 		
 		
 }
-});
-	
+    },
+    error : function(xhr, textStatus, errorThrown ) {
+        if (textStatus == 'timeout') {
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+                //try again
+                $.ajax(this);
+                return;
+            }            
+            return;
+        }
+        if (xhr.status == 500) {
+            //handle error
+        } else {
+            //handle error
+        }
+    }
+});	
+
 var addresscheck = "0";
-jQuery.getJSON('http://btc.blockdozer.com/insight-api/addr/'+thisBTCaddress,
-function(address) {
+
+$.ajax({
+    url : 'http://btc.blockdozer.com/insight-api/addr/'+thisBTCaddress,
+	dataType: 'json',
+    tryCount : 0,
+    retryLimit : 3,
+    success : function(address) {
 thisbalance = address['balance'];
 thisBTCaddress = address['addrStr'];	
 thisbalanceBTCSettings = thisbalance;
@@ -73,7 +100,24 @@ richness = parseFloat(richness) + parseFloat(thisbalance);
 thisbalance = ('$' + parseFloat(thisbalance, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
 addresscheck = thisbalance;
 balanceUpdaterBTC(thisBTCaddress, thisbalance, richness, thisbalanceBTCSettings);
-});
+    },
+    error : function(xhr, textStatus, errorThrown ) {
+        if (textStatus == 'timeout') {
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+                //try again
+                $.ajax(this);
+                return;
+            }            
+            return;
+        }
+        if (xhr.status == 500) {
+            //handle error
+        } else {
+            //handle error
+        }
+    }
+});	
 }
 
 function balanceUpdaterBTC () {

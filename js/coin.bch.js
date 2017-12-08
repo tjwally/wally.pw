@@ -37,8 +37,12 @@ if (bchi < BCHkeys.length) BCHBalancecrawler()
 
 function getpubkeyBalanceBCH (thisaddress, callback) {
 var addresscheck = "0";
-jQuery.getJSON('http://bcc.blockdozer.com/insight-api/addr/'+thisaddress,
-function(address) {
+$.ajax({
+    url : 'http://bcc.blockdozer.com/insight-api/addr/'+thisaddress,
+	dataType: 'json',
+    tryCount : 0,
+    retryLimit : 3,
+    success : function(address) {
 thisBCHbalance = address['balance'];
 thisBCHaddress = address['addrStr'];	
 thisBCHbalanceBCHSettings = thisBCHbalance;
@@ -47,6 +51,23 @@ richness = parseFloat(richness) + parseFloat(thisBCHbalance);
 thisBCHbalance = ('$' + parseFloat(thisBCHbalance, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
 addresscheck = thisBCHbalance;
 balanceUpdaterBCH(thisBCHaddress, thisBCHbalance, richness, thisBCHbalanceBCHSettings);
+    },
+    error : function(xhr, textStatus, errorThrown ) {
+        if (textStatus == 'timeout') {
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+                //try again
+                $.ajax(this);
+                return;
+            }            
+            return;
+        }
+        if (xhr.status == 500) {
+            //handle error
+        } else {
+            //handle error
+        }
+    }
 });
 }
 
