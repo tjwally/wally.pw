@@ -81,6 +81,26 @@ for ( var member in address.tokens) {
 		ethTokenbalance = address.tokens[member].balance;
 		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
 		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
+        if (address.tokens[member].tokenInfo.symbol == "REP") {	
+		ethTokenaddress = address.tokens[member].tokenInfo.address;
+		ethTokenbalance = address.tokens[member].balance;
+		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
+		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
+        if (address.tokens[member].tokenInfo.symbol == "VIU") {	
+		ethTokenaddress = address.tokens[member].tokenInfo.address;
+		ethTokenbalance = address.tokens[member].balance;
+		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
+		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
+        if (address.tokens[member].tokenInfo.symbol == "XNN") {	
+		ethTokenaddress = address.tokens[member].tokenInfo.address;
+		ethTokenbalance = address.tokens[member].balance;
+		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
+		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
+        if (address.tokens[member].tokenInfo.symbol == "DATA") {	
+		ethTokenaddress = address.tokens[member].tokenInfo.address;
+		ethTokenbalance = address.tokens[member].balance;
+		ethTokenSymbol = address.tokens[member].tokenInfo.symbol;
+		loadETHToken(ethTokenSymbol,ethTokenbalance,ethTokenaddress,thisETHaddress);}
 }
     },
     error : function(xhr, textStatus, errorThrown ) {

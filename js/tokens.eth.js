@@ -24,7 +24,7 @@ getETHTokenWalletsBalance(ethTokenSymbol, ethTokenbalance, thisETHaddress);
 
 
 function getETHTokenWalletsBalance (callback) {
-if (ethTokenSymbol == "EOS" || ethTokenSymbol == "ICN" || ethTokenSymbol == "MLN" || ethTokenSymbol == "GNO"){
+if (ethTokenSymbol == "EOS" || ethTokenSymbol == "ICN" || ethTokenSymbol == "MLN" || ethTokenSymbol == "GNO" || ethTokenSymbol == "REP" || ethTokenSymbol == "VIU" || ethTokenSymbol == "XNN" || ethTokenSymbol == "DATA"){
 ethTokenbalance = (ethTokenbalance/1000000000000000000);	
 }
 else{
@@ -33,7 +33,7 @@ ethTokenbalance = (ethTokenbalance/100000000);
 var $container = $(".keymanETHTokens");
 $container.append("<tr class=\"Tabl3TR\">"
 +"<td class=\"\">"+ethTokenSymbol+"</td>"
-+"<td class=\"\">Ethereum - "+thisETHaddress+"</td>"
++"<td class=\"\">ETH - "+thisETHaddress+"</td>"
 +"<td class=\"balanceC0unter"+ethTokenSymbol+" "+ethTokenSymbol+"keybalance"+ethTokenbalance+"\">"+ethTokenbalance+"</td>"
 +"<td class=\"deleteThisNot\" data-delcoin=\"NA\" data-delkey=\"\">N/A</td>"
 +"</tr>");

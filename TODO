@@ -1,0 +1,7 @@
+Pascal Coin
+update hash with wallet URL, then the user can just bookmark it
+
+
+
+done:
+check if localstorage is available and show a warning

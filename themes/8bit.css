@@ -22,12 +22,12 @@ a {text-decoration: none;}
 .MenuBarR		{flex:0;align-items: center text-align:left; width:100%; padding-top:20vh;}
 
 .topContentbar  { height:10vh; width:100%;	display: flex; justify-content: center;flex-direction: row; align-items: center; font-size:3vw;}
-.card {margin-left:1.5vw; margin-right:1.5vw; min-height: -webkit-min-content;width:12vw;max-width:12vw;text-align:center; margin-bottom:1.5vh; 
-margin-top:1.5vh; border:0px solid #001B00; background-color:#; padding:0.5vw;}
+.card {margin-left:1.2vw; margin-right:1.2vw; min-height: -webkit-min-content;width:11vw;max-width:11vw;text-align:center; margin-bottom:1.2vh; 
+margin-top:1.2vh; border:0px solid #001B00; background-color:#; padding:0.4vw;}
 .card img {max-width:100%; max-height:5vh; padding-bottom:0.2vh}
 .coinWealth {font-size:2vw;}
 .coinAmount	{font-size:1.5vw;}
-.coinLogo{ border-bottom:1vh dashed darkgreen; padding-bottom:2px;max-height:5vh;min-height:5vh; display: flex;flex-direction: column; align-items: center; justify-content:flex-end;}
+.coinLogo{ border-bottom:0.6vh dashed darkgreen; padding-bottom:2px;max-height:5vh;min-height:5vh; display: flex;flex-direction: column; align-items: center; justify-content:flex-end;}
 
 .P1BTN			{padding-top:1vh; padding-bottom:1vh;}
 .P1BTN {cursor:pointer; color:#fff; padding-left:2vw;}
@@ -40,8 +40,8 @@ margin-top:1.5vh; border:0px solid #001B00; background-color:#; padding:0.5vw;}
 #keymanagerWallets {padding-bottom:2vh;}
 #keymanagerWallets table {width:80%; margin: 0 auto; border-collapse: collapse;}
 #keymanagerWallets table tr{ padding:0; margin:0;}
-#keymanagerWallets table .pubkey{width:40%;background-color:#000; font-weight:bold;}
-#keymanagerWallets table .coindesc{width:30%;background-color:#000; font-weight:bold;}
+#keymanagerWallets table .pubkey{width:30%;background-color:#000; font-weight:bold;}
+#keymanagerWallets table .coindesc{width:40%;background-color:#000; font-weight:bold;}
 #keymanagerWallets table .coinbalance{width:20%;background-color:#000; font-weight:bold;}
 #keymanagerWallets table .delcoin{width:10%;background-color:#000; font-weight:bold;}
 #keymanagerWallets table td{color:#00D400; padding:0; margin:0;}
