@@ -31,7 +31,7 @@ thisBTCaddress = BTCkeys[i].pubkey;
 getpubkeyBalanceBTC(thisBTCaddress);
 i++;        
 if (i < BTCkeys.length) Balancecrawler()
-}, Math.floor(Math.random() * 1000) + 1000)
+}, Math.floor(Math.random() * 100) + btctimeout)
 }
 }
 
@@ -70,16 +70,28 @@ for ( var member in counterpartyCheck.data) {
         if (textStatus == 'timeout') {
             this.tryCount++;
             if (this.tryCount <= this.retryLimit) {
-                //try again
+                console.log("Retry BTC:" + tryCount );
                 $.ajax(this);
                 return;
             }            
             return;
         }
         if (xhr.status == 500) {
-            //handle error
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+                console.log("Retry BTC:" + tryCount );
+                $.ajax(this);
+                return;
+            }            
+            return;
         } else {
-            //handle error
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+                console.log("Retry BTC:" + tryCount );
+                $.ajax(this);
+                return;
+            }            
+            return;
         }
     }
 });	

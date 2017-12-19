@@ -1,4 +1,5 @@
 bchCoinWealth = 0;
+
 function loadkeysBCH (callback) {
 var $container = $("#keymanagerWallets");
 $container.append("<div class=\"keymanKeyHeader\">Bitcoin Cash Keys</div>"
@@ -30,7 +31,7 @@ $container.append("<tr class=\"Tabl3TR BCHsetENT"+BCHkeys[bchi].pubkey+"\">"
 getpubkeyBalanceBCH(BCHkeys[bchi].pubkey);
 bchi++;        
 if (bchi < BCHkeys.length) BCHBalancecrawler()
-}, Math.floor(Math.random() * 1000) + 1000)
+}, Math.floor(Math.random() * 100) + bchtimeout)
 }
 }
 
@@ -38,7 +39,7 @@ if (bchi < BCHkeys.length) BCHBalancecrawler()
 function getpubkeyBalanceBCH (thisaddress, callback) {
 var addresscheck = "0";
 $.ajax({
-    url : 'http://bcc.blockdozer.com/insight-api/addr/'+thisaddress,
+    url : 'http://cashexplorer.bitcoin.com/insight-api/addr/'+thisaddress,
 	dataType: 'json',
     tryCount : 0,
     retryLimit : 3,
@@ -56,16 +57,25 @@ balanceUpdaterBCH(thisBCHaddress, thisBCHbalance, richness, thisBCHbalanceBCHSet
         if (textStatus == 'timeout') {
             this.tryCount++;
             if (this.tryCount <= this.retryLimit) {
-                //try again
-                $.ajax(this);
-                return;
+            $.ajax(this);
+            return;
             }            
             return;
         }
         if (xhr.status == 500) {
-            //handle error
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+            $.ajax(this);
+            return;
+            }            
+            return;
         } else {
-            //handle error
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+            $.ajax(this);
+            return;
+            }            
+            return;
         }
     }
 });

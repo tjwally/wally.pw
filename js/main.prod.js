@@ -1,6 +1,12 @@
 walletcount = 0;
 richness= 0;
 scr33n=0;
+//timeouts
+bchtimeout = 500;
+btgtimeout = 500;
+btctimeout = 1500;
+//
+
 fiatCurrency = "";
 
 function FLinit() {

@@ -30,7 +30,7 @@ $container.append("<tr class=\"Tabl3TR BTGsetENT"+BTGkeys[btgi].pubkey+"\">"
 getpubkeyBalanceBTG(BTGkeys[btgi].pubkey);
 btgi++;        
 if (btgi < BTGkeys.length) BTGBalancecrawler()
-}, Math.floor(Math.random() * 1000) + 1000)
+}, Math.floor(Math.random() * 100) + btgtimeout)
 }
 }
 
