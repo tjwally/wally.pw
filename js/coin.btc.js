@@ -99,7 +99,7 @@ for ( var member in counterpartyCheck.data) {
 var addresscheck = "0";
 
 $.ajax({
-    url : 'http://btc.blockdozer.com/insight-api/addr/'+thisBTCaddress,
+    url : 'https://insight.bitpay.com/api/addr/'+thisBTCaddress,
 	dataType: 'json',
     tryCount : 0,
     retryLimit : 3,

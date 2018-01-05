@@ -4,7 +4,7 @@ scr33n=0;
 //timeouts
 bchtimeout = 500;
 btgtimeout = 500;
-btctimeout = 1500;
+btctimeout = 500;
 //
 
 fiatCurrency = "";
@@ -607,8 +607,8 @@ var cointype = $('select[name=cointype]').val();
 var coinpubkey = $('input[name=coinpubkey]').val();
 var addressdescription = $('input[name=addressdescription]').val();
 
-console.log(coinpubkey);
-console.log(addressdescription);
+//console.log(coinpubkey);
+//console.log(addressdescription);
 FLinit();
 
 if (cointype == "btc"){

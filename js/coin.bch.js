@@ -39,7 +39,7 @@ if (bchi < BCHkeys.length) BCHBalancecrawler()
 function getpubkeyBalanceBCH (thisaddress, callback) {
 var addresscheck = "0";
 $.ajax({
-    url : 'http://cashexplorer.bitcoin.com/insight-api/addr/'+thisaddress,
+    url : 'http://cashexplorer.bitcoin.com/api/addr/'+thisaddress,
 	dataType: 'json',
     tryCount : 0,
     retryLimit : 3,
