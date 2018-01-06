@@ -3,8 +3,9 @@ richness= 0;
 scr33n=0;
 //timeouts
 bchtimeout = 500;
-btgtimeout = 500;
-btctimeout = 500;
+btgtimeout = 1000;
+btctimeout = 1500;
+SBTCtimeout = 1500;
 //
 
 fiatCurrency = "";
@@ -206,6 +207,7 @@ anoncoins = [];
 	if(importJSon.indexOf("BTCSTART") != -1){	var BTCkeys=importJSon.substring(importJSon.lastIndexOf("##BTCSTART##")+12,importJSon.lastIndexOf("##BTCEND##"));	console.log("T0: "+BTCkeys); localStorage.setItem("BTCkeys", BTCkeys);}	
 	if(importJSon.indexOf("BCHSTART") != -1){	var BCHkeys=importJSon.substring(importJSon.lastIndexOf("##BCHSTART##")+12,importJSon.lastIndexOf("##BCHEND##"));	console.log("T0: "+BCHkeys); localStorage.setItem("BCHkeys", BCHkeys);}	
 	if(importJSon.indexOf("BTGSTART") != -1){	var BTGkeys=importJSon.substring(importJSon.lastIndexOf("##BTGSTART##")+12,importJSon.lastIndexOf("##BTGEND##"));	console.log("T0: "+BTGkeys); localStorage.setItem("BTGkeys", BTGkeys);}	
+	if(importJSon.indexOf("SBTCSTART") != -1){	var SBTCkeys=importJSon.substring(importJSon.lastIndexOf("##SBTCSTART##")+13,importJSon.lastIndexOf("##SBTCEND##"));	console.log("T0: "+SBTCkeys); localStorage.setItem("SBTCkeys", SBTCkeys);}	
 	if(importJSon.indexOf("LTCSTART") != -1){	var LTCkeys=importJSon.substring(importJSon.lastIndexOf("##LTCSTART##")+12,importJSon.lastIndexOf("##LTCEND##"));	console.log("T0: "+LTCkeys); localStorage.setItem("LTCkeys", LTCkeys);}	
 	if(importJSon.indexOf("DOGESTART") != -1){	var DOGEkeys=importJSon.substring(importJSon.lastIndexOf("##DOGESTART##")+13,importJSon.lastIndexOf("##DOGEEND##"));	console.log("T0: "+DOGEkeys); localStorage.setItem("DOGEkeys", DOGEkeys);}	
 	if(importJSon.indexOf("ETHSTART") != -1){	var ETHkeys=importJSon.substring(importJSon.lastIndexOf("##ETHSTART##")+12,importJSon.lastIndexOf("##ETHEND##"));	console.log("T0: "+ETHkeys); localStorage.setItem("ETHkeys", ETHkeys);}	
@@ -240,11 +242,12 @@ function priceCheck (callback) {
 console.log("###PRICE CHECK###");	
  jQuery.ajax({
     dataType: "json",
-    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,BTG,ETH,STORJ,XMR,ZEC,LTC,DOGE,ARDR,NXT,LTBC,FLDC,PEPECASH,NXS,EOS,ICN,GNO,MLN,REP,VIU,XNN,DATA&tsyms="+fiatCurrency,
+    url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,BTG,ETH,STORJ,XMR,ZEC,LTC,DOGE,ARDR,NXT,LTBC,FLDC,PEPECASH,NXS,EOS,ICN,GNO,MLN,REP,VIU,XNN,DATA,SBTC&tsyms="+fiatCurrency,
     success: function( data ) { 
 	rateBTC = data['BTC'][fiatCurrency];
 	rateBCH = data['BCH'][fiatCurrency];
 	rateBTG = data['BTG'][fiatCurrency];
+	rateSBTC = data['SBTC'][fiatCurrency];
 	rateLTC = data['LTC'][fiatCurrency];
 	rateDOGE = data['DOGE'][fiatCurrency];
 	rateETH = data['ETH'][fiatCurrency];
@@ -280,6 +283,14 @@ BTCkeys = [];
 BTCkeys = JSON.parse(localStorage.getItem("BTCkeys"));
 walletcount = walletcount + Object.keys(BTCkeys).length;
 console.log("###YES BTCkeys DATA###");
+}
+if (localStorage.getItem("SBTCkeys") === null) {
+console.log("###NO SBTCkeys DATA###");
+SBTCkeys = [];
+} else {
+SBTCkeys = JSON.parse(localStorage.getItem("SBTCkeys"));
+walletcount = walletcount + Object.keys(SBTCkeys).length;
+console.log("###YES SBTCkeys DATA###");
 }
 if (localStorage.getItem("BCHkeys") === null) {
 console.log("###NO BCHkeys DATA###");
@@ -332,6 +343,7 @@ function loadwallets(callback) {
 if(BTCkeys.length>0){loadkeysBTC();}
 if(BCHkeys.length>0){loadkeysBCH();}
 if(BTGkeys.length>0){loadkeysBTG();}
+if(SBTCkeys.length>0){loadkeysSBTC();}
 if(ETHkeys.length>0){loadkeysETH();}
 if(LTCkeys.length>0){loadkeysLTC();}
 if(DOGEkeys.length>0){loadkeysDOGE();}
@@ -341,6 +353,7 @@ function getWallets(callback) {
 if(BTCkeys.length>0){getWalletsBTC();}
 if(BCHkeys.length>0){getWalletsBCH();}
 if(BTGkeys.length>0){getWalletsBTG();}
+if(SBTCkeys.length>0){getWalletsSBTC();}
 if(ETHkeys.length>0){getWalletsETH();}
 if(LTCkeys.length>0){getWalletsLTC();}
 if(DOGEkeys.length>0){getWalletsDOGE();}
@@ -525,12 +538,16 @@ $( document ).ready(function() {
 $('#downloadJSON').on('click', function() {	 
  		var BTCkeys = localStorage.getItem("BTCkeys");	
 		if (BTCkeys) {var BTCkeys = "##BTCSTART##"+BTCkeys+"##BTCEND##";}else{BTCkeys=""};
+	
 		var BCHkeys = localStorage.getItem("BCHkeys");	
 		if (BCHkeys) {var BCHkeys = "##BCHSTART##"+BCHkeys+"##BCHEND##";}else{BCHkeys=""};
 
 		var BTGkeys = localStorage.getItem("BTGkeys");	
 		if (BTGkeys) {var BTGkeys = "##BTGSTART##"+BTGkeys+"##BTGEND##";}else{BTGkeys=""};
-	
+
+ 		var SBTCkeys = localStorage.getItem("SBTCkeys");	
+		if (SBTCkeys) {var SBTCkeys = "##SBTCSTART##"+SBTCkeys+"##SBTCEND##";}else{SBTCkeys=""};	
+				
 		var LTCkeys = localStorage.getItem("LTCkeys");	
 		if (LTCkeys) {var LTCkeys = "##LTCSTART##"+LTCkeys+"##LTCEND##";}else{LTCkeys=""};
 		var DOGEkeys = localStorage.getItem("DOGEkeys");	
@@ -542,21 +559,23 @@ $('#downloadJSON').on('click', function() {
 		var anoncoins = localStorage.getItem("anoncoins");	
 		if (anoncoins) {var anoncoins = "##A_CSTART##"+anoncoins+"##A_CEND##";}else{anoncoins=""};	
 		//var url = "data:application/octet-stream;base64," + Base64.encode(data);
-		$('#downloadJSONDIS').html(BTCkeys+BCHkeys+BTGkeys+LTCkeys+DOGEkeys+ETHkeys+fiatCurrencyexp+wallyThemeexp+anoncoins);
+		$('#downloadJSONDIS').html(BTCkeys+BCHkeys+BTGkeys+SBTCkeys+LTCkeys+DOGEkeys+ETHkeys+fiatCurrencyexp+wallyThemeexp+anoncoins);
 });
 
 $('#importJSONBTN').on('click', function() {	 
 	localStorage.clear();
 	anoncoins = [];
 	var importJSon = $('textarea#importJSON').val();
-	if(importJSon.indexOf("BTCSTART") != -1){	var BTCkeys=importJSon.substring(importJSon.lastIndexOf("##BTCSTART##")+12,importJSon.lastIndexOf("##BTCEND##"));	console.log("T0: "+BTCkeys); localStorage.setItem("BTCkeys", BTCkeys);}	
-	if(importJSon.indexOf("BCHSTART") != -1){	var BCHkeys=importJSon.substring(importJSon.lastIndexOf("##BCHSTART##")+12,importJSon.lastIndexOf("##BCHEND##"));	console.log("T0: "+BCHkeys); localStorage.setItem("BCHkeys", BCHkeys);}	
-	
-	if(importJSon.indexOf("BTGSTART") != -1){	var BTGkeys=importJSon.substring(importJSon.lastIndexOf("##BTGSTART##")+12,importJSon.lastIndexOf("##BTGEND##"));	console.log("T0: "+BTGkeys); localStorage.setItem("BTGkeys", BTGkeys);}	
+	if(importJSon.indexOf("##BTCSTART##") != -1){	var BTCkeys=importJSon.substring(importJSon.lastIndexOf("##BTCSTART##")+12,importJSon.lastIndexOf("##BTCEND##"));	console.log("T0: "+BTCkeys); localStorage.setItem("BTCkeys", BTCkeys);}	
+	if(importJSon.indexOf("##BCHSTART##") != -1){	var BCHkeys=importJSon.substring(importJSon.lastIndexOf("##BCHSTART##")+12,importJSon.lastIndexOf("##BCHEND##"));	console.log("T0: "+BCHkeys); localStorage.setItem("BCHkeys", BCHkeys);}	
+	if(importJSon.indexOf("##BTGSTART##") != -1){	var BTGkeys=importJSon.substring(importJSon.lastIndexOf("##BTGSTART##")+12,importJSon.lastIndexOf("##BTGEND##"));	console.log("T0: "+BTGkeys); localStorage.setItem("BTGkeys", BTGkeys);}	
 
-	if(importJSon.indexOf("LTCSTART") != -1){	var LTCkeys=importJSon.substring(importJSon.lastIndexOf("##LTCSTART##")+12,importJSon.lastIndexOf("##LTCEND##"));	console.log("T0: "+LTCkeys); localStorage.setItem("LTCkeys", LTCkeys);}	
-	if(importJSon.indexOf("DOGESTART") != -1){	var DOGEkeys=importJSon.substring(importJSon.lastIndexOf("##DOGESTART##")+13,importJSon.lastIndexOf("##DOGEEND##"));	console.log("T0: "+DOGEkeys); localStorage.setItem("DOGEkeys", DOGEkeys);}	
-	if(importJSon.indexOf("ETHSTART") != -1){	var ETHkeys=importJSon.substring(importJSon.lastIndexOf("##ETHSTART##")+12,importJSon.lastIndexOf("##ETHEND##"));	console.log("T0: "+ETHkeys); localStorage.setItem("ETHkeys", ETHkeys);}	
+	if(importJSon.indexOf("##SBTCSTART##") != -1){	var SBTCkeys=importJSon.substring(importJSon.lastIndexOf("##SBTCSTART##")+13,importJSon.lastIndexOf("##SBTCEND##"));	console.log("T0: "+SBTCkeys); localStorage.setItem("SBTCkeys", SBTCkeys);}	
+
+	
+	if(importJSon.indexOf("##LTCSTART##") != -1){	var LTCkeys=importJSon.substring(importJSon.lastIndexOf("##LTCSTART##")+12,importJSon.lastIndexOf("##LTCEND##"));	console.log("T0: "+LTCkeys); localStorage.setItem("LTCkeys", LTCkeys);}	
+	if(importJSon.indexOf("##DOGESTART##") != -1){	var DOGEkeys=importJSon.substring(importJSon.lastIndexOf("##DOGESTART##")+13,importJSon.lastIndexOf("##DOGEEND##"));	console.log("T0: "+DOGEkeys); localStorage.setItem("DOGEkeys", DOGEkeys);}	
+	if(importJSon.indexOf("##ETHSTART##") != -1){	var ETHkeys=importJSon.substring(importJSon.lastIndexOf("##ETHSTART##")+12,importJSon.lastIndexOf("##ETHEND##"));	console.log("T0: "+ETHkeys); localStorage.setItem("ETHkeys", ETHkeys);}	
 	if(importJSon.indexOf("A_CSTART") != -1){	var anoncoins=importJSon.substring(importJSon.lastIndexOf("##A_CSTART##")+12,importJSon.lastIndexOf("##A_CEND##"));	console.log("T0: "+anoncoins); localStorage.setItem("anoncoins", anoncoins);}	
 	if(importJSon.indexOf("S_FCSTART") != -1){	var fiatCurrency=importJSon.substring(importJSon.lastIndexOf("##S_FCSTART##")+13,importJSon.lastIndexOf("##S_FCEND##"));	console.log("T0: "+fiatCurrency); localStorage.setItem("fiatCurrency", fiatCurrency);}	
 	if(importJSon.indexOf("S_WTSTART") != -1){	var wallyTheme=importJSon.substring(importJSon.lastIndexOf("##S_WTSTART##")+13,importJSon.lastIndexOf("##S_WTEND##"));	console.log("T0: "+wallyTheme); localStorage.setItem("wallyTheme", wallyTheme);}	
@@ -566,12 +585,17 @@ $('#importJSONBTN').on('click', function() {
 $('#generateURL').on('click', function() {	 
  		var BTCkeys = localStorage.getItem("BTCkeys");	
 		if (BTCkeys) {var BTCkeys = "##BTCSTART##"+BTCkeys+"##BTCEND##<br>";}else{BTCkeys=""};
+
 		var BCHkeys = localStorage.getItem("BCHkeys");	
 		if (BCHkeys) {var BCHkeys = "##BCHSTART##"+BCHkeys+"##BCHEND##<br>";}else{BCHkeys=""};
 
 		var BTGkeys = localStorage.getItem("BTGkeys");	
 		if (BTGkeys) {var BTGkeys = "##BTGSTART##"+BTGkeys+"##BTGEND##<br>";}else{BTGkeys=""};
 
+		var SBTCkeys = localStorage.getItem("SBTCkeys");	
+		if (SBTCkeys) {var SBTCkeys = "##SBTCSTART##"+SBTCkeys+"##SBTCEND##<br>";}else{SBTCkeys=""};
+		
+		
 		var LTCkeys = localStorage.getItem("LTCkeys");	
 		if (LTCkeys) {var LTCkeys = "##LTCSTART##"+LTCkeys+"##LTCEND##<br>";}else{LTCkeys=""};
 		var DOGEkeys = localStorage.getItem("DOGEkeys");	
@@ -586,7 +610,7 @@ $('#generateURL').on('click', function() {
 		
 // Decode the String
 
-		var wallyURL = b64EncodeUnicode(BTCkeys+BCHkeys+BTGkeys+LTCkeys+DOGEkeys+ETHkeys+fiatCurrencyexp+wallyThemeexp+anoncoins);
+		var wallyURL = b64EncodeUnicode(BTCkeys+BCHkeys+BTGkeys+SBTCkeys+LTCkeys+DOGEkeys+ETHkeys+fiatCurrencyexp+wallyThemeexp+anoncoins);
 		$('#WalletURL').html("http://wally.pw/?wbk="+encodeURIComponent(wallyURL));
 });
 
@@ -628,6 +652,12 @@ if (cointype == "btg"){
 		BTGkeys.push({pubkey : coinpubkey,     description : addressdescription});
 		localStorage.setItem("BTGkeys", JSON.stringify(BTGkeys));
 		BTGkeys = JSON.parse(localStorage.getItem("BTGkeys"));
+}
+if (cointype == "sbtc"){
+	console.log("SBTC");
+		SBTCkeys.push({pubkey : coinpubkey,     description : addressdescription});
+		localStorage.setItem("SBTCkeys", JSON.stringify(SBTCkeys));
+		SBTCkeys = JSON.parse(localStorage.getItem("SBTCkeys"));	
 }
 if (cointype == "ltc"){
 		console.log("LTC");

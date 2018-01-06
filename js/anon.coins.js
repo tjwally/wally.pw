@@ -1,8 +1,8 @@
 function getAnonCoins (callback) {
 if (localStorage.getItem("anoncoins") === null) {
-console.log("###NO anoncoins DATA###");
+//console.log("###NO anoncoins DATA###");
 anoncoins = [];
-console.log(anoncoins);
+//console.log(anoncoins);
 var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "NXS"; });
 if (twoadd === false){anoncoins.push({coin:"NXS", name:"Nexus", balance:"0"});}
 var twoadd = anoncoins.some(function(item, index) { twoadd = index; return item.coin == "NXT"; });
@@ -51,7 +51,7 @@ if (anC1 < anoncoins.length) anonCoinBalancecrawler()
 
 if (walletcount === 0) {
 $('.WalletsTracked').html("Public Keys Tracked: "+walletcount);	
-console.log("walletcount === 0");
+////console.log("walletcount === 0");
 addKeyWiz();
 }
 
@@ -63,18 +63,18 @@ $('.ancoinBalUpdater').each(function () {
 var coin = $(this).attr("data-coin")
 var cname = $(this).attr("data-cname")
 var abalance = $(this).val();
-console.log(abalance);
+//console.log(abalance);
 var thisrate = "rate"+coin;
 if (abalance > 0){
 thisCoinWealthFIAT = abalance;	
 thisCoinWealthFIAT = parseFloat(thisCoinWealthFIAT);	
 thisCoinWealthFIAT = (abalance*eval(thisrate)).toFixed(4);	
 thisCoinWealthFIATCard = thisCoinWealthFIAT;
-console.log(thisCoinWealthFIAT);
+//console.log(thisCoinWealthFIAT);
 richness = parseFloat(richness) + parseFloat(thisCoinWealthFIAT);
-console.log(richness);
+//console.log(richness);
 richnescalc = ('$' + parseFloat(richness, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
-console.log(richnescalc);
+//console.log(richnescalc);
 $('.wealthCounter').html(richnescalc + " " + fiatCurrency);	
 
 
@@ -92,7 +92,7 @@ sortByBalance();
 };
 
 function RefreshAnonListeners() {
-console.log(anoncoins);
+//console.log(anoncoins);
 $("input[name=ancoinBalUpdater]").off(); 
 $("input[name=ancoinBalUpdater]").on('change', function() {
 var balance = $(this).val();
